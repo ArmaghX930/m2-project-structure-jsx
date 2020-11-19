@@ -54,7 +54,7 @@ app.use(
 
 // ROUTES
 app.use("/auth", authRouter);
-//app.use("/user", userRouter);
+// app.use("/user", userRouter);
 app.use("/", siteRouter);
 
 /* GET home page. */
