@@ -16,40 +16,46 @@
 
 ## User Stories
 
+- 
 - As a user, I want view various spaces options directly on the home page
 - As a user, I want to be able to search for spaces using my custom criteria
 - As a user, I want to be able to view available spaces that fit my search criteria on the search results page
 - As a user, I want to be able to view the space search result located on a map on the search results page
 - As a user, I want to be able to update the search criteria on the search results page
 - As a user, I want to be able to create, edit and delete my account on my account page
-- As a user, I want to be able to authenticate myself
+- As a user, I want to be able to authenticate myself on the authentication page
 - As a space provider, I want to be able to create, edit and delete my space on my space page
-- As a client, I want to be able to book a space
-- As a user, I want to be able to cancel my booking
+- As a client, I want to be able to book a space on the space page
+- As a user, I want to be able to cancel my booking in my profile view
 - As a user, I want to be able to view my upcoming bookings on my profile page
 - As a user, I want to be able to view my booking history on my profile page
-- As a user, I want to be able to familiarize with the answers to frequently asked questions
+- As a user, I want to be able to familiarize with the answers to frequently asked questions on the FAQ page
 
 
 
 ## Server Routes
 
-| Method | Route                        | Description                                                  | Request - Body                                               |
-| ------ | ---------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `GET`  | /                            | Homepage                                                     |                                                              |
-| `GET`  | /auth                        | Renders the Authentication Page                              |                                                              |
-| `POST` | /auth/signup                 | Creates a New User Account, Appends a New User Document to the Database and Redirects the User to the Previously Viewed Page | {username, email, password, dateOfBirth}                     |
-| `POST` | /auth/login                  | Authenticates an Existing User and Redirects the User to the Previously Viewed Page | {username, email, password, dateOfBirth}                     |
-| `GET`  | /search                      | Renders Search Result Page                                   |                                                              |
-| `GET`  | /space/:id                   | Space Details Page                                           |                                                              |
-| `GET`  | /user/:id                    | Renders Profile Page of the User                             |                                                              |
-| `POST` | /user/:id/                   | Updates User's Profile Info and Refreshes the Profile Page after Editing | {imageUrl, username}                                         |
-| `GET`  | /user/:id/space/add          | Renders a Form to Create and Publish a Space                 | {[imageUrl], name, address, locationUrl, capacity, welcomePhrase, [amenities], pricePerHour, priceCurrency, discount} |
-| `GET`  | /user/:id/space/:id          | Renders Space Page for an Authenticated User                 |                                                              |
-| `POST` | /user/:id/space/:id          | Updates Provider's View of Space Page and Refreshes the Space Info after Editing | {[imageUrl], name, address, locationUrl, capacity, welcomePhrase, [amenities], pricePerHour, priceCurrency, discount} |
-| `POST` | /user/:id/space/:id/book     | Creates a Booking and Redirects User to their Profile Page   | {clientID, spaceID, startDate, endDate, priceAmount, priceCurrency, discount} |
-| `POST` | /user/:id/booking/:id/cancel | Cancels the Booking and Refreshes User's Profile Page        |                                                              |
-| `GET`  | /faq                         | Renders the FAQ Page                                         |                                                              |
+| Method | Route                    | Description                                                  | Request - Body                                               |
+| ------ | ------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `GET`  | /                        | Homepage                                                     |                                                              |
+| `GET`  | /auth                    | Renders the Authentication Page                              |                                                              |
+| `POST` | /auth/signup             | Creates a New User Account, Appends a New User Document to the Database and Redirects the User to the Previously Viewed Page | {username, email, password, dateOfBirth}                     |
+| `POST` | /auth/login              | Authenticates an Existing User and Redirects the User to the Previously Viewed Page | {username, email, password, dateOfBirth}                     |
+| `POST` | /auth/logout             | Destroys the Session and Redirects Unauthenticated User to Homepage | {id}                                                         |
+| `GET`  | /search                  | Renders Search Result Page                                   |                                                              |
+| `GET`  | /space/:id               | Space Details Page                                           |                                                              |
+| `GET`  | /user                    | Renders Profile Page of the User                             |                                                              |
+| `GET`  | /user/edit               |                                                              |                                                              |
+| `POST` | /user/edit               | Updates User's Profile Info and Refreshes the Profile Page after Editing | {imageUrl, username, phoneNumber, dateOfBirth}               |
+| `POST` | /user/delete             | Deletes User's Profile and Redirects to Homepage Unauthenticated | {_id}                                                        |
+| `GET`  | /user/space/add          | Renders a Form to Create and Publish a Space                 |                                                              |
+| `POST` | /user/space/add          | Adds New Space to DB and Refreshes the Space Page            | {[imageUrl], name, address, locationUrl, capacity, welcomePhrase, [amenities], pricePerHour, priceCurrency, discount} |
+| `GET`  | /user/space/:id          | Renders Space Page for an Authenticated User                 |                                                              |
+| `POST` | /user/space/edit/:id     | Updates Provider's View of Space Page and Refreshes the Space Info after Editing | {[imageUrl], name, address, locationUrl, capacity, welcomePhrase, [amenities], pricePerHour, priceCurrency, discount} |
+| `POST` | /user/space/delete/:id   | Deletes the Space and Redirects Provider to Their Profile Page | {_id}                                                        |
+| `POST` | /user/space/book/:id     | Creates a Booking and Redirects User to their Profile Page   | {clientID, spaceID, startDate, endDate, priceAmount, priceCurrency, discount} |
+| `POST` | /user/booking/cancel/:id | Cancels the Booking and Refreshes User's Profile Page        |                                                              |
+| `GET`  | /faq                     | Renders the FAQ Page                                         |                                                              |
 
 
 

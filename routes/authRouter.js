@@ -9,7 +9,6 @@ authRouter.get("/", (req, res, next) => {
 });
 
 authRouter.post("/login", (req, res, next) => {
-    // Logic for the login functionality
     const {email, password} = req.body;
 
     if (email === "" || password === ""){
@@ -30,7 +29,7 @@ authRouter.post("/login", (req, res, next) => {
                 user.password = "***";
                 req.session.currentUser = user;
                 const props = {user};
-                res.redirect(`/user/${props.user._id}`); // Instead of Home, redirect to the Previous visited Page
+                res.redirect("/user"); // Instead of Home, redirect to the Previous visited Page
             }
             else {
                 const props = {errorMessage: "Wrong password. Try again"};
@@ -44,7 +43,6 @@ authRouter.post("/login", (req, res, next) => {
 });
 
 authRouter.post("/signup", (req, res, next) => {
-    // Logic for the signup functionality
     const {username, email, password, repeatPassword} = req.body;
 
     if (username === "" || email === "" || password === "" || repeatPassword === ""){
@@ -82,11 +80,16 @@ authRouter.post("/signup", (req, res, next) => {
                 user.password = "***";
                 req.session.currentUser = user;
                 const props = {user};
-                res.render("Home", props); // Instead of Home, redirect to the Previous visited Page
+                res.redirect("/user"); 
             })
             .catch((err) => console.log(err));
         })
         .catch((err) => console.log(err));
 });
+
+authRouter.get("/logout", (req, res, next) => {
+    delete req.session.currentUser;
+    res.redirect("/");
+})
 
 module.exports = authRouter;

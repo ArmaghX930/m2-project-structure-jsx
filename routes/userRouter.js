@@ -4,10 +4,9 @@ const app = require("../app");
 const User = require("../models/User.model");
 
 
-userRouter.get("/:userid", (req, res, next) => {
-    console.log("THIS IS THE REQUEST PARAMS" + req.params.userid)
-    const userId = req.params.userid;
-    User.findById(userId)
+userRouter.get("/", (req, res, next) => {
+    const userid = req.session.currentUser._id;
+    User.findById(userid)
     .then((user) => {
         const props = {user: user};
         res.render("UserProfile", props);
@@ -15,10 +14,35 @@ userRouter.get("/:userid", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-// userRouter.post("/:id", (req, res, next) => {
-//     // Updates User's Profile Info and Refreshes the Profile Page after Editing
-//     res.render("UserProfile");
-// });
+userRouter.get("/edit", (req, res, next) => {
+    const userid = req.session.currentUser._id;
+    User.findById(userid)
+    .then((user) => {
+        const props = {user: user};
+        res.render("UserProfileEdit", props);
+    })
+    .catch((err) => console.log(err));
+});
+
+userRouter.post("/edit", (req, res, next) => {
+    const userid = req.session.currentUser._id;
+    const { imageUrl, username, dateOfBirth, phoneNumber } = req.body;
+    User.findByIdAndUpdate(userid, { imageUrl, username, dateOfBirth, phoneNumber }, {new: true})
+    .then((updatedUser) => {
+        res.redirect("/user");
+    })
+    .catch((err) => console.log(err));
+});
+
+userRouter.get("/delete", (req, res, next) => {
+    const userid = req.session.currentUser._id;
+    req.session.destroy();
+    User.findByIdAndDelete(userid)
+    .then(() => {
+        res.redirect("/");
+    })
+    .catch((err) => console.log(err));
+});
 
 // userRouter.get("/:id/space/add", (req, res, next) => {
 //     // Renders a Form to Create and Publish a Space

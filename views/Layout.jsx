@@ -14,12 +14,14 @@ function Layout(props) {
           <h3>Self explanatory catchphrase</h3>
           {props.user 
           ? ( <div>
-                <a href={`/user/userid=${props.user._id}`}>
+                <a href={`/user`}>
                   <div>
                     {props.user.username}
                   </div>
                 </a>
+                <a href="/auth/logout">
                 <div>Logout button</div>
+                </a>
               </div>) 
           : (<div>Absence of userpic</div> )}
         </header>

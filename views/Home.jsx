@@ -20,7 +20,7 @@ function Home(props) {
       <article id="provider-ad">
         <p>aggressive provider recruitment</p>
         {props.user 
-        ? <a href={`/user/${props.user._id}`}><div id="become-provider-btn">BECOME SPACE PROVIDER</div></a>
+        ? <a href="/user"><div id="become-provider-btn">BECOME SPACE PROVIDER</div></a>
         : <a href="/auth"><div id="become-provider-btn">BECOME SPACE PROVIDER</div></a>
          }
       </article>

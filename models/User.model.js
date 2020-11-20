@@ -9,7 +9,7 @@ const userSchema = new Schema (
     email: {type: String, required: true},
     password: {type: String, required: true},
     imageUrl: String,
-    dateOfBirth: Date,
+    dateOfBirth: String,
     phoneNumber: [{type: String}],
     //bookingHistory: [{type: Schema.Type.ObjectId, ref:"Booking"}],
     isProvider: Boolean,
