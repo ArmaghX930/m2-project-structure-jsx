@@ -1,13 +1,18 @@
 const express = require("express");
 const userRouter = express.Router();
 const app = require("../app");
-const isLoggedIn = require('./../utils/isLoggedIn');
+const User = require("../models/User.model");
 
-userRouter.get("/:id", isLoggedIn, (req, res, next) => {
-    const userId = req.params;
-    console.log(userId);
-    // const props = {user: req.session.currentUser.user};
-    res.render("UserProfile");
+
+userRouter.get("/:userid", (req, res, next) => {
+    console.log("THIS IS THE REQUEST PARAMS" + req.params.userid)
+    const userId = req.params.userid;
+    User.findById(userId)
+    .then((user) => {
+        const props = {user: user};
+        res.render("UserProfile", props);
+    })
+    .catch((err) => console.log(err));
 });
 
 // userRouter.post("/:id", (req, res, next) => {

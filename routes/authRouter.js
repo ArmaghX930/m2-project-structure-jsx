@@ -30,7 +30,7 @@ authRouter.post("/login", (req, res, next) => {
                 user.password = "***";
                 req.session.currentUser = user;
                 const props = {user};
-                res.render("Home", props); // Instead of Home, redirect to the Previous visited Page
+                res.redirect(`/user/${props.user._id}`); // Instead of Home, redirect to the Previous visited Page
             }
             else {
                 const props = {errorMessage: "Wrong password. Try again"};

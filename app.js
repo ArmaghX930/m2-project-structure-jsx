@@ -12,6 +12,7 @@ const MongoStore = require("connect-mongo")(session);
 const authRouter = require("./routes/authRouter");
 const siteRouter = require("./routes/siteRouter");
 const userRouter = require("./routes/userRouter");
+const isLoggedIn = require('./utils/isLoggedIn');
 
 const app = express();
 
@@ -54,7 +55,7 @@ app.use(
 
 // ROUTES
 app.use("/auth", authRouter);
-// app.use("/user", userRouter);
+app.use("/user", isLoggedIn, userRouter);
 app.use("/", siteRouter);
 
 /* GET home page. */

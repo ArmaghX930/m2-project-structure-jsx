@@ -1,6 +1,7 @@
 const express = require("express");
 const app = require("../app");
 const siteRouter = express.Router();
+// const isLoggedIn = require('./../utils/isLoggedIn');
 
 siteRouter.get("/", (req, res, next) => {
     res.render("Home");
