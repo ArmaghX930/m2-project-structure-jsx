@@ -11,10 +11,10 @@ const userSchema = new Schema (
     imageUrl: String,
     dateOfBirth: String,
     phoneNumber: [{type: String}],
-    //bookingHistory: [{type: Schema.Type.ObjectId, ref:"Booking"}],
+    //bookingHistory: [{type: Schema.Types.ObjectId, ref:"Booking"}],
     isProvider: Boolean,
-    //spaces: [{type: Schema.Type.ObjectId, ref:"Space"}],
-    //reviews: [{reviewID: {type: Schema.Type.ObjectId, ref:"Review"}}]
+    spaces: [{type: Schema.Types.ObjectId, ref:"Space"}],
+    //reviews: [{reviewID: {type: Schema.Types.ObjectId, ref:"Review"}}]
     },
     {   timestamps:
         {created_at: "created_at",

@@ -73,10 +73,10 @@ User Model
      "imageUrl": String,
      "dateOfBirth": String,
      "phoneNumber": [{type: String}],
-     "bookingHistory": [{type: Schema.Type.ObjectId, ref:"Booking"}],
+     "bookingHistory": [{type: Schema.Types.ObjectId, ref:"Booking"}],
      "isProvider": Boolean,
-     "spaces": [{type: Schema.Type.ObjectId, ref:"Space"}],
-     "reviews": [{reviewID: {type: Schema.Type.ObjectId, ref:"Review"}}]
+     "spaces": [{type: Schema.Types.ObjectId, ref:"Space"}],
+     "reviews": [{reviewID: {type: Schema.Types.ObjectId, ref:"Review"}}]
 }
 ```
 
@@ -91,7 +91,7 @@ Space Model
     "locationUrl": String,
     "address": String,
     "capacity": Number,
-    "providerID": [{type: Schema.Type.ObjectId, ref:"User"}],
+    "providerID": [{type: Schema.Types.ObjectId, ref:"User"}],
     "rating": Number,
     "isActive": Boolean,
     "imageUrl": [String],
@@ -100,7 +100,7 @@ Space Model
     "pricePerHour": Number,
     "priceCurrency": String,
     "discount": {type: Number, min:0, max:1, default:0},
-    "reviews": [{reviewID: {type: Schema.Type.ObjectId, ref:"Review"}}]
+    "reviews": [{reviewID: {type: Schema.Types.ObjectId, ref:"Review"}}]
 }
 ```
 
@@ -110,8 +110,8 @@ Booking Model
 
 ```
 {
-        clientID: {type: Schema.Type.ObjectId, ref:"User"},
-        spaceID: {type: Schema.Type.ObjectId, ref:"Space"},
+        clientID: {type: Schema.Types.ObjectId, ref:"User"},
+        spaceID: {type: Schema.Types.ObjectId, ref:"Space"},
         startDate: Date,
         endDate: Date,
         durationInHours: Number,
@@ -120,10 +120,10 @@ Booking Model
         discount: { type: Number, max: 1, min: 0, default: 0 },
         cancelled: {
             date: Date, 
-            cancelledBy: {type: Schema.Type.ObjectId, ref:"User"}, 
+            cancelledBy: {type: Schema.Types.ObjectId, ref:"User"}, 
             refund: {type:Number, default: 0}
         },
-        review: {type: Schema.Type.ObjectId, ref:"Review"}
+        review: {type: Schema.Types.ObjectId, ref:"Review"}
 }
 ```
 

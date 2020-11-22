@@ -57,7 +57,8 @@ userRouter.get("/delete", (req, res, next) => {
 // });
 
  userRouter.post("/space/add", (req, res, next) => {
-    const {title, address, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, discount, imageUrl} = req.body;
+    const {title, address, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
+    const discount = req.body.discount / 100;
 
     const providerID = req.session.currentUser._id;
 
@@ -72,11 +73,34 @@ userRouter.get("/delete", (req, res, next) => {
         priceCurrency, 
         discount, 
         imageUrl,
-        providerID,
+        providerID
     })
     .then((createdSpace) => {
-        const props = {space: createdSpace};
-        res.render('SpaceProfile', props);
+        
+        const spaceID = createdSpace._id;
+        User.findByIdAndUpdate(providerID, {$push:{spaces: spaceID}}, {new: true})
+            .then((userObj) => {
+                const userId = userObj._id;
+                return userId;
+
+            })
+            .then((userId) => {
+                User.findByIdAndUpdate(userId, {isProvider: true}, {new: true})
+                    .then((userObj) => {
+                        const index = userObj.spaces.length - 1;
+                        return userObj.spaces[index];
+                    })
+                    .catch((err) => console.log(err)); 
+            })
+            .catch((err) => console.log(err)); 
+    })
+    .then((spaceId) => {
+        Space.findById(spaceId)
+            .then((spaceObj) => {
+                //const props = {space: spaceObj};
+                res.redirect('/');
+            })
+            .catch((err) => console.log(err));
     })
     .catch((err) => console.log(err));
 

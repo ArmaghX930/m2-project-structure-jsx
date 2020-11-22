@@ -10,7 +10,7 @@ const spaceSchema = new Schema (
     address: String,
     contactInfo: String,
     capacity: Number,
-    providerID: [{type: Schema.Type.ObjectId, ref:"User"}],
+    providerID: [{type: Schema.Types.ObjectId, ref:"User"}],
     rating: Number,
     isActive: Boolean,
     imageUrl: [String],
@@ -19,7 +19,7 @@ const spaceSchema = new Schema (
     pricePerHour: Number,
     priceCurrency: String,
     discount: {type: Number, min:0, max:1, default:0},
-    //reviews: [{reviewID: {type: Schema.Type.ObjectId, ref:"Review"}}]
+    //reviews: [{reviewID: {type: Schema.Types.ObjectId, ref:"Review"}}]
     },
     {   timestamps:
         {created_at: "created_at",
