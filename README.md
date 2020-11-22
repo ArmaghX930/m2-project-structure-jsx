@@ -71,7 +71,7 @@ User Model
      "email": {type: String, required: true},
      "password": {type: String, required: true},
      "imageUrl": String,
-     "dateOfBirth": Date,
+     "dateOfBirth": String,
      "phoneNumber": [{type: String}],
      "bookingHistory": [{type: Schema.Type.ObjectId, ref:"Booking"}],
      "isProvider": Boolean,
@@ -85,7 +85,9 @@ User Model
 Space Model
 
 ```
-{	"name": String,
+{	"title": String,
+    "description": String,
+    "contactInfo": String,
     "locationUrl": String,
     "address": String,
     "capacity": Number,
@@ -94,7 +96,7 @@ Space Model
     "isActive": Boolean,
     "imageUrl": [String],
     "welcomePhrase": String,
-    "amenities": [{type: String, enum: ['WiFi, 'WC', 'Coffee machine', 'Refrigerator', 			'Phone booth', 'Terrace', 'Indoor smoking patio', 'Ergonomic Equipment']}],
+    "amenities": [{type: String, enum: ['WiFi', 'WC', 'Coffee machine', 'Refrigerator', 'Climate Control', 'Phone booth', 'Terrace', 'Indoor smoking patio', 'Ergonomic Equipment', 'Kitchen', 'Canteen']}],
     "pricePerHour": Number,
     "priceCurrency": String,
     "discount": {type: Number, min:0, max:1, default:0},

@@ -1,6 +1,7 @@
 const express = require("express");
 const userRouter = express.Router();
 const app = require("../app");
+const Space = require("../models/Space.model");
 const User = require("../models/User.model");
 
 
@@ -44,20 +45,43 @@ userRouter.get("/delete", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-// userRouter.get("/:id/space/add", (req, res, next) => {
-//     // Renders a Form to Create and Publish a Space
-//     res.render("Space");
-// });
+ userRouter.get("/space/add", (req, res, next) => {
+     // Renders a Form to Create and Publish a Space
+
+     res.render("CreateSpace");
+ });
 
 // userRouter.get("/:id/space/:id", (req, res, next) => {
 //     // Renders Space Page for an Authenticated User
 //     res.render("Space");
 // });
 
-// userRouter.post("/:id/space/:id", (req, res, next) => {
-//     // Updates Provider's View of Space Page and Refreshes the Space Info after Editing
-//     res.render("Space");
-// });
+ userRouter.post("/space/add", (req, res, next) => {
+    const {title, address, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, discount, imageUrl} = req.body;
+
+    const providerID = req.session.currentUser._id;
+
+    Space.create({
+        title, 
+        address, 
+        contactInfo, 
+        capacity, 
+        welcomePhrase, 
+        description, 
+        pricePerHour, 
+        priceCurrency, 
+        discount, 
+        imageUrl,
+        providerID,
+    })
+    .then((createdSpace) => {
+        const props = {space: createdSpace};
+        res.render('SpaceProfile', props);
+    })
+    .catch((err) => console.log(err));
+
+
+});
 
 // userRouter.post("/:id/space/:id/book", (req, res, next) => {
 //     // Creates a Booking and Redirects User to their Profile Page
