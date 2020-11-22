@@ -3,9 +3,9 @@ const Layout = require("./Layout");
 const Space = require("../models/Space.model");
 const Card = require("./components/Card");
 
-function CreateSpace() {
+function CreateSpace(props) {
   return (
-    <Layout title="List New Space">
+    <Layout title="List New Space" user={props.user ? props.user : ""}>
       <h1>Create Space</h1>
       <form action="/user/space/add" method="POST">
         <label htmlFor="title">Title</label><br/>
@@ -15,7 +15,7 @@ function CreateSpace() {
         <input type="text" name="address"/>
         <br/>
         <label htmlFor="contactInfo">Contact Details</label><br/>
-        <input type="textarea" name="contactInfo" rows="3" cols="30"/>
+        <textarea name="contactInfo" rows="3" cols="30" maxlength="90"placeholder="Phone Number, Website Link, Instagram @, etc"/>
         <br/>
         <label htmlFor="capacity">Maximum Capacity</label><br/>
         <input type="number" name="capacity" min="1"/><span> People </span>
@@ -23,6 +23,29 @@ function CreateSpace() {
         <label htmlFor="welcomePhrase">Welcome Phrase</label><br/>
         <textarea name="welcomePhrase" rows="2" cols="30" maxlength="60"></textarea>
         <br/>
+        <p>Amenities</p>
+        <label htmlFor="amenities">WiFi</label>
+        <input type="checkbox" name="amenities" value="WiFi" /><br/>
+        <label htmlFor="amenities">WC</label>
+        <input type="checkbox" name="amenities" value="WC" /><br/>
+        <label htmlFor="amenities">Coffee Machine</label>
+        <input type="checkbox" name="amenities" value="Coffee Machine" /><br/>
+        <label htmlFor="amenities">Refrigerator</label>
+        <input type="checkbox" name="amenities" value="Refrigerator" /><br/>
+        <label htmlFor="amenities">Climate Control</label>
+        <input type="checkbox" name="amenities" value="Climate Control" /><br/>
+        <label htmlFor="amenities">Phone Booth</label>
+        <input type="checkbox" name="amenities" value="Phone Booth" /><br/>
+        <label htmlFor="amenities">Terrace</label>
+        <input type="checkbox" name="amenities" value="Terrace" /><br/>
+        <label htmlFor="amenities">Indoor Smoking Patio</label>
+        <input type="checkbox" name="amenities" value="Indoor Smoking Patio" /><br/>
+        <label htmlFor="amenities">Ergonomic Equipment</label>
+        <input type="checkbox" name="amenities" value="Ergonomic Equipment" /><br/>
+        <label htmlFor="amenities">Kitchen</label>
+        <input type="checkbox" name="amenities" value="Kitchen" /><br/>
+        <label htmlFor="amenities">Canteen</label>
+        <input type="checkbox" name="amenities" value="Canteen" /><br/>
         <label htmlFor="description">Description</label><br/>
         <textarea name="description" rows="10" cols="50" maxlength="500"></textarea>
         <br/>
@@ -31,10 +54,10 @@ function CreateSpace() {
         <br/>
         <label htmlFor="priceCurrency">Currency</label><br/>
         <select name="priceCurrency">
-          <option value="euros">€</option>
-          <option value="dollars">$</option>
-          <option value="pounds">£</option>
-          <option value="rubles">₽</option>
+          <option value="€">€</option>
+          <option value="$">$</option>
+          <option value="£">£</option>
+          <option value="₽">₽</option>
         </select>
         <br/>
         <label htmlFor="discount">Discount</label><br/>

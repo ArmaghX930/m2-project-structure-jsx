@@ -47,24 +47,20 @@ userRouter.get("/delete", (req, res, next) => {
 
  userRouter.get("/space/add", (req, res, next) => {
      // Renders a Form to Create and Publish a Space
+     const props = {user: req.session.currentUser};
 
-     res.render("CreateSpace");
+     res.render("CreateSpace", props);
  });
 
-// userRouter.get("/:id/space/:id", (req, res, next) => {
-//     // Renders Space Page for an Authenticated User
-//     res.render("Space");
-// });
-
  userRouter.post("/space/add", (req, res, next) => {
-    const {title, address, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
+    const {title, address, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
     const discount = req.body.discount / 100;
-
     const providerID = req.session.currentUser._id;
 
     Space.create({
         title, 
-        address, 
+        address,
+        amenities, 
         contactInfo, 
         capacity, 
         welcomePhrase, 
@@ -78,33 +74,26 @@ userRouter.get("/delete", (req, res, next) => {
     .then((createdSpace) => {
         
         const spaceID = createdSpace._id;
-        User.findByIdAndUpdate(providerID, {$push:{spaces: spaceID}}, {new: true})
-            .then((userObj) => {
-                const userId = userObj._id;
-                return userId;
-
-            })
-            .then((userId) => {
-                User.findByIdAndUpdate(userId, {isProvider: true}, {new: true})
-                    .then((userObj) => {
-                        const index = userObj.spaces.length - 1;
-                        return userObj.spaces[index];
-                    })
-                    .catch((err) => console.log(err)); 
-            })
-            .catch((err) => console.log(err)); 
+        const pr = User.findByIdAndUpdate(providerID, {$push:{spaces: spaceID}}, {new: true})
+        return pr;
+    })
+    .then((userObj) => {
+        const userId = userObj._id;
+        return userId;
+    })
+    .then((userId) => {
+        const pr = User.findByIdAndUpdate(userId, {isProvider: true}, {new: true})
+        return pr;
+    })
+    .then((userObj) => {
+        const index = userObj.spaces.length - 1;
+        const newSpaceId = userObj.spaces[index];
+        return newSpaceId;
     })
     .then((spaceId) => {
-        Space.findById(spaceId)
-            .then((spaceObj) => {
-                //const props = {space: spaceObj};
-                res.redirect('/');
-            })
-            .catch((err) => console.log(err));
+        res.redirect(`/space/${spaceId}`);
     })
-    .catch((err) => console.log(err));
-
-
+    .catch((err) => console.log(err)); 
 });
 
 // userRouter.post("/:id/space/:id/book", (req, res, next) => {
