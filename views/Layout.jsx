@@ -23,7 +23,7 @@ function Layout(props) {
                 <div>Logout button</div>
                 </a>
               </div>) 
-          : (<div>Absence of userpic</div> )}
+          : (<a href="/auth/"><div>Absence of userpic</div></a>)}
         </header>
         <hr/>
         {props.children}

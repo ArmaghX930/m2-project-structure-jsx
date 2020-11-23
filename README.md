@@ -50,9 +50,11 @@
 | `POST` | /user/delete             | Deletes User's Profile and Redirects to Homepage Unauthenticated | {_id}                                                        |
 | `GET`  | /user/space/add          | Renders a Form to Create and Publish a Space                 |                                                              |
 | `POST` | /user/space/add          | Adds New Space to DB and Refreshes the Space Page            | {[imageUrl], name, address, locationUrl, capacity, welcomePhrase, [amenities], pricePerHour, priceCurrency, discount} |
-| `GET`  | /user/space/:id          | Renders Space Page for an Authenticated User                 |                                                              |
+| `GET`  | /space/:id          | Renders Space View                |                                                              |
+| `GET` | /user/space/edit/:id | Renders Space Edit View | |
 | `POST` | /user/space/edit/:id     | Updates Provider's View of Space Page and Refreshes the Space Info after Editing | {[imageUrl], name, address, locationUrl, capacity, welcomePhrase, [amenities], pricePerHour, priceCurrency, discount} |
 | `POST` | /user/space/delete/:id   | Deletes the Space and Redirects Provider to Their Profile Page | {_id}                                                        |
+| `GET` | /user/space/book/:id | Renders Booking Page |  |
 | `POST` | /user/space/book/:id     | Creates a Booking and Redirects User to their Profile Page   | {clientID, spaceID, startDate, endDate, priceAmount, priceCurrency, discount} |
 | `POST` | /user/booking/cancel/:id | Cancels the Booking and Refreshes User's Profile Page        |                                                              |
 | `GET`  | /faq                     | Renders the FAQ Page                                         |                                                              |

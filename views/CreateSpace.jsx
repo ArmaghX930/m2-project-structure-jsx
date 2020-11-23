@@ -5,7 +5,7 @@ const Card = require("./components/Card");
 
 function CreateSpace(props) {
   return (
-    <Layout title="List New Space" user={props.user ? props.user : ""}>
+    <Layout title="List New Space" user={props.user}>
       <h1>Create Space</h1>
       <form action="/user/space/add" method="POST">
         <label htmlFor="title">Title</label><br/>
@@ -64,11 +64,11 @@ function CreateSpace(props) {
         <input type="number" name="discount" min="0" max="100" value="0"/><span> %</span>
         <br/>
         <label htmlFor="imageUrl">Photos</label><br/>
-        <input type="string" name="imageUrl"/><br/>
-        <input type="string" name="imageUrl"/><br/>
-        <input type="string" name="imageUrl"/><br/>
-        <input type="string" name="imageUrl"/><br/>
-        <input type="string" name="imageUrl"/><br/>
+        <input type="string" name="imageUrl" value=""/><br/>
+        <input type="string" name="imageUrl" value=""/><br/>
+        <input type="string" name="imageUrl" value=""/><br/>
+        <input type="string" name="imageUrl" value=""/><br/>
+        <input type="string" name="imageUrl" value=""/><br/>
         <button type="submit">Publish</button>
       </form>
 

@@ -16,11 +16,13 @@ siteRouter.get("/search", (req, res, next) => {
 siteRouter.get("/space/:id", (req, res, next) => {
     const spaceId = req.params.id;
     Space.findById(spaceId)
-         .then((spaceObj) => {
+        .populate('providerID')
+        .then((spaceObj) => {
+            console.log("PROVIDER ID NAME " + spaceObj.providerID);
             const props = {user: req.session.currentUser, space: spaceObj};
             res.render("ViewSpace", props);
-         })
-         .catch((err) => console.log(err));
+        })
+        .catch((err) => console.log(err));
 });
 
 siteRouter.get("/faq", (req, res, next) => {

@@ -11,14 +11,16 @@ function ViewSpace (props) {
                 </div>
                 <section>
                     <aside>
-
+                        <p>Provided by {props.space.providerID.username}</p>
+                        <p>Contact Information:</p>
+                        <p>{props.space.contactInfo}</p>
                         <p> Capacity: </p>{props.space.capacity === 1 ? 
                             <p> {props.space.capacity} person</p>
                             : <p> {props.space.capacity} people</p>
                         }
                         <p> Price: {props.space.pricePerHour}{props.space.priceCurrency} per hour </p>
                         <p> Current discount: {props.space.discount * 100}% </p>
-                        <p> Price with discount: {props.space.pricePerHour * (1 - props.space.discount)} per hour</p>
+                        <p> Price with discount: {props.space.pricePerHour * (1 - props.space.discount)}{props.space.priceCurrency} per hour</p>
                         <p> Amenities: </p>
                         <ul>
                             {
@@ -30,6 +32,19 @@ function ViewSpace (props) {
                             }
                         </ul>
                         <p>HERE GOES CALENDAR</p>
+                        {(props.space.providerID[0].toString() === props.user._id)
+                        ?  ( <div> 
+                                <a href={`/user/space/edit/${props.space._id}`}><div>EDIT SPACE</div></a> 
+                                <a href={`/user/space/delete/${props.space._id}`}><div>DELETE SPACE</div></a>
+                            </div> )
+                        : props.user 
+                        ? (<div> 
+                            <a href={`/user/space/book/${props.space._id}`}><div>BOOK SPACE</div></a>
+                        </div>)
+                        : (<div> 
+                            <a href={`/auth/`}><div>BOOK SPACE</div></a>
+                        </div>)
+                        }
                     </aside>
                     <div>
                         {

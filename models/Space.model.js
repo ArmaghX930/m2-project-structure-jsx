@@ -13,7 +13,7 @@ const spaceSchema = new Schema (
     providerID: [{type: Schema.Types.ObjectId, ref:"User"}],
     rating: Number,
     isActive: Boolean,
-    imageUrl: [String],
+    imageUrl: [{type: String}],
     welcomePhrase: String,
     amenities: [{type: String, enum: ['WiFi', 'WC', 'Coffee Machine', 'Refrigerator', 'Climate Control', 'Phone Booth', 'Terrace', 'Indoor Smoking Patio', 'Ergonomic Equipment', 'Kitchen', 'Canteen']}],
     pricePerHour: Number,
