@@ -1,19 +1,24 @@
 const React = require("react");
 const Layout = require("./Layout");
-const Card = require("./components/Card");
 
-function Faq() {
+function Faq(props) {
   return (
-    <Layout title="Home Page">
-      <h1>Faq View Page</h1>
-      <Card
-        text="smaller component example"
-        image="https://i.imgur.com/OH7dtc0.png"
-      />
-      <Card
-        text="second example of component use"
-        image="https://i.imgur.com/dHdzhWn.png"
-      />
+    <Layout title="FAQ" user={props.user ? props.user : ""}>
+      <main>
+       <h2>Frequently Asked Questions</h2>
+        <article>
+          <h4>Question</h4>
+          <p>LOREM IPSUM</p>
+        </article>
+        <article>
+          <h4>Question 2</h4>
+          <p>LOREM IPSUM</p>
+        </article>
+        <article>
+          <h4>Question 3</h4>
+          <p>LOREM IPSUM</p>
+        </article>
+      </main>
     </Layout>
   );
 }

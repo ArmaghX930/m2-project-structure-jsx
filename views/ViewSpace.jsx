@@ -18,9 +18,9 @@ function ViewSpace (props) {
                             <p> {props.space.capacity} person</p>
                             : <p> {props.space.capacity} people</p>
                         }
-                        <p> Price: {props.space.pricePerHour}{props.space.priceCurrency} per hour </p>
+                        <p> Price: {props.space.pricePerHour}€ per hour </p>
                         <p> Current discount: {props.space.discount * 100}% </p>
-                        <p> Price with discount: {props.space.pricePerHour * (1 - props.space.discount)}{props.space.priceCurrency} per hour</p>
+                        <p> Price with discount: {props.space.pricePerHour * (1 - props.space.discount)}€ per hour</p>
                         <p> Amenities: </p>
                         <ul>
                             {
@@ -57,6 +57,7 @@ function ViewSpace (props) {
                     </div>
                 </section>
                 <h3> {props.space.address} </h3>
+                <h4> {props.space.city} </h4>
             </main>
 
             {/* <div id='map' style='width: 400px; height: 300px;'></div>

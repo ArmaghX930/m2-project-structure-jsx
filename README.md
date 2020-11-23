@@ -92,6 +92,7 @@ Space Model
     "contactInfo": String,
     "locationUrl": String,
     "address": String,
+    "city": String,
     "capacity": Number,
     "providerID": [{type: Schema.Types.ObjectId, ref:"User"}],
     "rating": Number,
@@ -100,7 +101,6 @@ Space Model
     "welcomePhrase": String,
     "amenities": [{type: String, enum: ['WiFi', 'WC', 'Coffee Machine', 'Refrigerator', 'Climate Control', 'Phone Booth', 'Terrace', 'Indoor Smoking Patio', 'Ergonomic Equipment', 'Kitchen', 'Canteen']}],
     "pricePerHour": Number,
-    "priceCurrency": String,
     "discount": {type: Number, min:0, max:1, default:0},
     "reviews": [{reviewID: {type: Schema.Types.ObjectId, ref:"Review"}}]
 }
@@ -118,7 +118,6 @@ Booking Model
         endDate: Date,
         durationInHours: Number,
         priceAmount: Number,
-        priceCurrency: String,
         discount: { type: Number, max: 1, min: 0, default: 0 },
         cancelled: {
             date: Date, 

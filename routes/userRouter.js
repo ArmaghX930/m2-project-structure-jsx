@@ -53,13 +53,14 @@ userRouter.get("/delete", (req, res, next) => {
  });
 
  userRouter.post("/space/add", (req, res, next) => {
-    const {title, address, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
+    const {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
     const discount = req.body.discount / 100;
     const providerID = req.session.currentUser._id;
 
     Space.create({
         title, 
         address,
+        city,
         amenities, 
         contactInfo, 
         capacity, 
@@ -108,9 +109,9 @@ userRouter.get("/space/edit/:id", (req, res, next) => {
 
 userRouter.post("/space/edit/:id", (req, res, next) => {
     const spaceid = req.params.id;
-    const {title, address, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
+    const {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
     const discount = req.body.discount / 100;
-    Space.findByIdAndUpdate(spaceid, {title, address, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl, discount}, {new: true})
+    Space.findByIdAndUpdate(spaceid, {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl, discount}, {new: true})
     .then((updatedSpace) => {
         const spaceId = updatedSpace._id
         res.redirect(`/space/${spaceId}`);

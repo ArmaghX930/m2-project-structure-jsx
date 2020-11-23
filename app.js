@@ -59,9 +59,4 @@ app.use("/auth", authRouter);
 app.use("/user", isLoggedIn, userRouter);
 app.use("/", siteRouter);
 
-/* GET home page. */
-app.get("/", (req, res, next) => {
-  res.render("Home");
-});
-
 module.exports = app;

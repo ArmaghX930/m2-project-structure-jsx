@@ -12,6 +12,9 @@ function EditSpace(props) {
                     <label htmlFor="address">Address</label><br/>
                     <input type="text" name="address" value={props.space.address}/>
                     <br/>
+                    <label htmlFor="city">City</label><br/>
+                    <input type="text" name="city" value={props.space.city}/>
+                    <br/>
                     <label htmlFor="contactInfo">Contact Details</label><br/>
                     <textarea name="contactInfo" rows="3" cols="30" maxlength="90"placeholder="Phone Number, Website Link, Instagram @, etc" value={props.space.contactInfo}/>
                     <br/>
@@ -81,15 +84,7 @@ function EditSpace(props) {
                     <textarea name="description" rows="10" cols="50" maxlength="500"></textarea>
                     <br/>
                     <label htmlFor="pricePerHour">Hourly Price</label><br/>
-                    <input type="number" name="pricePerHour" min="0" value={props.space.pricePerHour}/>
-                    <br/>
-                    <label htmlFor="priceCurrency">Currency</label><br/>
-                    <select name="priceCurrency" value={props.space.priceCurrency}>
-                    <option value="€">€</option>
-                    <option value="$">$</option>
-                    <option value="£">£</option>
-                    <option value="₽">₽</option>
-                    </select>
+                    <input type="number" name="pricePerHour" min="0" value={props.space.pricePerHour}/><span>€</span>
                     <br/>
                     <label htmlFor="discount">Discount</label><br/>
                     <input type="number" name="discount" min="0" max="100" value="0" value={props.space.discount * 100}/><span> %</span>

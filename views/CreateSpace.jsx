@@ -1,7 +1,7 @@
 const React = require("react");
 const Layout = require("./Layout");
 const Space = require("../models/Space.model");
-const Card = require("./components/Card");
+const Card = require("./components/SpaceCard");
 
 function CreateSpace(props) {
   return (
@@ -13,6 +13,9 @@ function CreateSpace(props) {
         <br/>
         <label htmlFor="address">Address</label><br/>
         <input type="text" name="address"/>
+        <br/>
+        <label htmlFor="city">City</label><br/>
+        <input type="text" name="city"/>
         <br/>
         <label htmlFor="contactInfo">Contact Details</label><br/>
         <textarea name="contactInfo" rows="3" cols="30" maxlength="90"placeholder="Phone Number, Website Link, Instagram @, etc"/>
@@ -50,15 +53,7 @@ function CreateSpace(props) {
         <textarea name="description" rows="10" cols="50" maxlength="500"></textarea>
         <br/>
         <label htmlFor="pricePerHour">Hourly Price</label><br/>
-        <input type="number" name="pricePerHour" min="0"/>
-        <br/>
-        <label htmlFor="priceCurrency">Currency</label><br/>
-        <select name="priceCurrency">
-          <option value="€">€</option>
-          <option value="$">$</option>
-          <option value="£">£</option>
-          <option value="₽">₽</option>
-        </select>
+        <input type="number" name="pricePerHour" min="0"/><span>€</span>
         <br/>
         <label htmlFor="discount">Discount</label><br/>
         <input type="number" name="discount" min="0" max="100" value="0"/><span> %</span>
