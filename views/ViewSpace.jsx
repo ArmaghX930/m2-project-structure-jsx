@@ -11,7 +11,7 @@ function ViewSpace (props) {
                 </div>
                 <section>
                     <aside>
-                        <p>Provided by {props.space.providerID.username}</p>
+                        <p>Provided by {props.space.providerID[0].username}</p>
                         <p>Contact Information:</p>
                         <p>{props.space.contactInfo}</p>
                         <p> Capacity: </p>{props.space.capacity === 1 ? 
@@ -32,7 +32,7 @@ function ViewSpace (props) {
                             }
                         </ul>
                         <p>HERE GOES CALENDAR</p>
-                        {(props.space.providerID[0].toString() === props.user._id)
+                        {(props.space.providerID[0]._id == props.user._id)
                         ?  ( <div> 
                                 <a href={`/user/space/edit/${props.space._id}`}><div>EDIT SPACE</div></a> 
                                 <a href={`/user/space/delete/${props.space._id}`}><div>DELETE SPACE</div></a>

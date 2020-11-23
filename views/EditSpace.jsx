@@ -94,12 +94,10 @@ function EditSpace(props) {
                     <label htmlFor="discount">Discount</label><br/>
                     <input type="number" name="discount" min="0" max="100" value="0" value={props.space.discount * 100}/><span> %</span>
                     <br/>
-                    <label htmlFor="imageUrl">Photos</label><br/>
+                    <p>Current Image</p>
+                    <img width="120px" src={props.space.imageUrl[0]} /><br/>
+                    <label htmlFor="imageUrl">New Image URL</label><br/>
                     <input type="string" name="imageUrl" defaultValue={props.space.imageUrl[0]}/> <br/>
-                    <input type="string" name="imageUrl" defaultValue={props.space.imageUrl[1]}/> <br/>
-                    <input type="string" name="imageUrl" defaultValue={props.space.imageUrl[2]}/> <br/>
-                    <input type="string" name="imageUrl" defaultValue={props.space.imageUrl[3]}/> <br/>
-                    <input type="string" name="imageUrl" defaultValue={props.space.imageUrl[4]}/> <br/>
                     <button type="submit">Publish</button>
                 </form>
         </Layout>

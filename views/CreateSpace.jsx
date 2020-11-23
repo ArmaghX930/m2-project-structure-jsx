@@ -65,10 +65,6 @@ function CreateSpace(props) {
         <br/>
         <label htmlFor="imageUrl">Photos</label><br/>
         <input type="string" name="imageUrl" value=""/><br/>
-        <input type="string" name="imageUrl" value=""/><br/>
-        <input type="string" name="imageUrl" value=""/><br/>
-        <input type="string" name="imageUrl" value=""/><br/>
-        <input type="string" name="imageUrl" value=""/><br/>
         <button type="submit">Publish</button>
       </form>
 

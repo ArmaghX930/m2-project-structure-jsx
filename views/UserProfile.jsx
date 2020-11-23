@@ -39,13 +39,15 @@ function UserProfile(props) {
           <aside>
             <h4>Your Listed Spaces</h4>
             { props.user.isProvider
-              ? (<div>
-                  <div className="space-card">SPACE CARD COMPONENT</div>
-                  <div className="space-card">SPACE CARD COMPONENT</div>
-                  <div className="space-card">SPACE CARD COMPONENT</div>
-                  <div className="space-card">SPACE CARD COMPONENT</div>
+              ? <div>
+                  {props.user.spaces.map((space, i) => {
+                    return(<div key={i}>
+                      <img width="40px" src={space.imageUrl[0]} />
+                        <a href={`/space/${space._id}`}><h6> {space.title} </h6></a>
+                    </div>)
+                  })}
                   <a href="/user/space/add"><div>Add Another Space</div></a>
-                </div>)
+                </div>  
               : ( <div>
                     <h5>You Haven't Listed Any Spaces Yet</h5>
                     <a href="/user/space/add"><div>Become a Provider</div></a>

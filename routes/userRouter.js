@@ -8,6 +8,7 @@ const User = require("../models/User.model");
 userRouter.get("/", (req, res, next) => {
     const userid = req.session.currentUser._id;
     User.findById(userid)
+    .populate('spaces')
     .then((user) => {
         const props = {user: user};
         res.render("UserProfile", props);
