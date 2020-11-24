@@ -4,7 +4,7 @@ const SpaceCard = require("./components/SpaceCard");
 
 function Home(props) {
   return (
-    <Layout title="Home Page" user={props.user ? props.user : ""}>
+    <Layout title="spaceOut" user={props.user ? props.user : ""}>
       <main>
         <h2>Description that blah blah</h2>
         <div>

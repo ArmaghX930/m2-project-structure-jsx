@@ -3,7 +3,7 @@ const Layout = require("./Layout");
 
 function Authentication(props) {
   return (
-    <Layout title="Home Page">
+    <Layout title="Login/Signup">
       <main>
         <section>
           <h1>Sign Up</h1>

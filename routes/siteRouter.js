@@ -46,6 +46,7 @@ siteRouter.get("/search", (req, res, next) => {
 
             Space.find({$and:[{city: city}, {pricePerHour:{$lte:pricePerHour}}, {capacity:{$gte:capacity}}]})
             .then((resultsArr) => {
+                
                const props = {user: req.session.currentUser, spaces: resultsArr, search: searchQuery, cities: citiesArr};
                res.render("SearchResults", props);
             })

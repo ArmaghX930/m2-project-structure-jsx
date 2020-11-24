@@ -3,7 +3,7 @@ const Layout = require('./Layout');
 
 function EditSpace(props) {
     return (
-        <Layout title="Edit Space" user={props.user}>
+        <Layout title={`Edit ${props.space.title}`} user={props.user}>
             <h1>Create Space</h1>
                 <form action={`/user/space/edit/${props.space._id}`} method="POST">
                     <label htmlFor="title">Title</label><br/>

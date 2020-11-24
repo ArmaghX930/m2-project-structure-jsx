@@ -16,6 +16,8 @@ const isLoggedIn = require('./utils/isLoggedIn');
 
 const app = express();
 
+const Space = require("./models/Space.model");
+
 // DB CONNECTION
 mongoose
   .connect(process.env.MONGODB_URI, {
@@ -58,5 +60,13 @@ app.use(
 app.use("/auth", authRouter);
 app.use("/user", isLoggedIn, userRouter);
 app.use("/", siteRouter);
+app.get("/api/spaces", (req, res, next) => {
+  const {city, pricePerHour, capacity} = req.query;
+  Space.find({$and:[{city: city}, {pricePerHour:{$lte:pricePerHour}}, {capacity:{$gte:capacity}}]})
+    .then((resultsArr) => {
+      res.json(resultsArr);
+  })
+  .catch((err) => console.log(err));
+})
 
 module.exports = app;

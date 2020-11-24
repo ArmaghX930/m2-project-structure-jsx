@@ -4,7 +4,7 @@ const SpaceCard = require("./components/SpaceCard");
 
 function SearchResults(props) {
   return (
-    <Layout title="Search Spaces" user={props.user ? props.user : ""}>
+    <Layout title="Search for Spaces" user={props.user ? props.user : ""}>
           <div id="search-horizontal-container">
             <form action="/search" method="GET">
               <label htmlFor="city">City </label>
@@ -24,12 +24,21 @@ function SearchResults(props) {
             </form>
           </div>
       <h1>Search Results</h1>
+      <div>
         {props.spaces.map((spaceObj, i) => {
-              return (
-                <SpaceCard space={spaceObj} key={i}>
-                </SpaceCard>
-              )
+                return (
+                  <SpaceCard space={spaceObj} key={i}>
+                  </SpaceCard>
+                )
             })}
+      </div>
+        
+      <div id='map' style={{width: "400px", height: "300px"}}></div>
+
+      <script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
+      <link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
+      <script async defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+      <script src="/javascripts/mapbox.js"></script>
     </Layout>
   );
 }

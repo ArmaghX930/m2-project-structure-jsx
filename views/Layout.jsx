@@ -2,10 +2,10 @@ const React = require("react");
 
 function Layout(props) {
   return (
-    <html lang="en">
+    <html lang="en_GB">
       <head>
         <meta charSet="utf-8" />
-        <title> {props.title ? props.title : "My App"} </title>
+        <title> {props.title ? props.title : "spaceOut"} </title>
         <link rel="stylesheet" href="/stylesheets/style.css" />
       </head>
       <body>

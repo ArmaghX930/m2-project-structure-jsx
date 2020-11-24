@@ -31,7 +31,6 @@ function ViewSpace (props) {
                             })
                             }
                         </ul>
-                        <p>HERE GOES CALENDAR</p>
                         {(props.space.providerID._id == props.user._id)
                         ?  ( <div> 
                                 <a href={`/user/space/edit/${props.space._id}`}><div>EDIT SPACE</div></a> 
@@ -59,12 +58,6 @@ function ViewSpace (props) {
                 <h3> {props.space.address} </h3>
                 <h4> {props.space.city} </h4>
             </main>
-
-            {/* <div id='map' style='width: 400px; height: 300px;'></div>
-
-<script src='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v1.12.0/mapbox-gl.css' rel='stylesheet' />
-<script src="/javascripts/mapbox.js"></script> */}
 
         </Layout>
     )

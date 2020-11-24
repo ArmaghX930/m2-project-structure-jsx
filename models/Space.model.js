@@ -6,7 +6,7 @@ const spaceSchema = new Schema (
     {	
     title: String,
     description: String,
-    locationUrl: String,
+    coordinates: [{type: Number}],
     address: String,
     city: String,
     contactInfo: String,

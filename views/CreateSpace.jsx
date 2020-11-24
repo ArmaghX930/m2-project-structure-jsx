@@ -12,6 +12,10 @@ function CreateSpace(props) {
         <label htmlFor="address">Address</label><br/>
         <input type="text" name="address"/>
         <br/>
+        <label htmlFor="coordinates">Provide the Location Coordinates to Display the Space on the Map(optional)</label><br/>
+        <input type="text" name="longitude" placeholder="Longitude"/> <br/>
+        <input type="text" name="latitude" placeholder="Latitude"/> 
+        <br/>
         <label htmlFor="city">City</label><br/>
         <input type="text" name="city"/>
         <br/>
@@ -58,6 +62,7 @@ function CreateSpace(props) {
         <br/>
         <label htmlFor="imageUrl">Photos</label><br/>
         <input type="string" name="imageUrl" value=""/><br/>
+        
         <button type="submit">Publish</button>
       </form>
 

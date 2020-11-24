@@ -57,11 +57,13 @@ userRouter.get("/delete", (req, res, next) => {
     const {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
     const discount = req.body.discount / 100;
     const providerID = req.session.currentUser._id;
+    const coordinates = [Number(req.body.longitude), Number(req.body.latitude)];
 
     Space.create({
         title, 
         address,
         city,
+        coordinates,
         amenities, 
         contactInfo, 
         capacity, 
