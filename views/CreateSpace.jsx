@@ -5,7 +5,7 @@ function CreateSpace(props) {
   return (
     <Layout title="List New Space" user={props.user}>
       <h1>Create Space</h1>
-      <form action="/user/space/add" method="POST">
+      <form action="/user/space/add" method="POST" encType="multipart/form-data">
         <label htmlFor="title">Title</label><br/>
         <input type="text" name="title"/>
         <br/>
@@ -60,8 +60,8 @@ function CreateSpace(props) {
         <label htmlFor="discount">Discount</label><br/>
         <input type="number" name="discount" min="0" max="100" value="0"/><span> %</span>
         <br/>
-        <label htmlFor="imageUrl">Photos</label><br/>
-        <input type="string" name="imageUrl" value=""/><br/>
+        {/* <label htmlFor="imageUrl">Photo</label><br/>
+        <input type="file" name="imageUrl"/><br/> */}
         
         <button type="submit">Publish</button>
       </form>

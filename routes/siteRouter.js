@@ -29,8 +29,11 @@ siteRouter.get("/", (req, res, next) => {
 });
 
 siteRouter.get("/search", (req, res, next) => {
-    const {city, pricePerHour, capacity} = req.query;
+    let {city, pricePerHour, capacity} = req.query;
     const searchQuery = {city, pricePerHour, capacity};
+
+    pricePerHour ? pricePerHour : pricePerHour = 10000;
+    capacity ? capacity : capacity = 0;    
    
     Space.find()
          .then((allSpacesArr) => {
@@ -46,8 +49,9 @@ siteRouter.get("/search", (req, res, next) => {
 
             Space.find({$and:[{city: city}, {pricePerHour:{$lte:pricePerHour}}, {capacity:{$gte:capacity}}]})
             .then((resultsArr) => {
-                
+                console.log(resultsArr);
                const props = {user: req.session.currentUser, spaces: resultsArr, search: searchQuery, cities: citiesArr};
+            
                res.render("SearchResults", props);
             })
          })

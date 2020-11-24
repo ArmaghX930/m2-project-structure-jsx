@@ -1,6 +1,8 @@
 const express = require("express");
 const userRouter = express.Router();
 const app = require("../app");
+const parser = require('./../config/cloudinary');
+
 const Space = require("../models/Space.model");
 const User = require("../models/User.model");
 const Booking = require("../models/Booking.model");
@@ -10,7 +12,14 @@ userRouter.get("/", (req, res, next) => {
     const userid = req.session.currentUser._id;
     User.findById(userid)
     .populate('spaces')
+    .populate({
+        path: 'bookings', 
+        populate: {
+            path: 'spaceID'
+        }
+    })
     .then((user) => {
+        console.log(user.bookings);
         const props = {user: user};
         res.render("UserProfile", props);
     })
@@ -27,10 +36,14 @@ userRouter.get("/edit", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-userRouter.post("/edit", (req, res, next) => {
+userRouter.post("/edit", parser.single("imageUrl"), (req, res, next) => {
     const userid = req.session.currentUser._id;
-    const { imageUrl, username, dateOfBirth, phoneNumber } = req.body;
-    User.findByIdAndUpdate(userid, { imageUrl, username, dateOfBirth, phoneNumber }, {new: true})
+    // const imageUrl = req.file.secure_url;
+    let { username, dateOfBirth, phoneNumber } = req.body;
+    if (!dateOfBirth) {
+        dateOfBirth = req.session.currentUser.dateOfBirth;
+    }
+    User.findByIdAndUpdate(userid, { username, dateOfBirth, phoneNumber }, {new: true})
     .then((updatedUser) => {
         res.redirect("/user");
     })
@@ -192,8 +205,12 @@ userRouter.post("/space/book/:id", (req, res, next) => {
             const pr = Booking.create({clientID, spaceID, startDate, startTime, pricePerHour, discount, priceWithDiscount});
             return pr;
          })
-         .then(() => {
-            res.redirect("/user/");
+         .then((newBooking) => {
+            const bookingID = newBooking._id;
+            User.findByIdAndUpdate(clientID, {$push:{bookings: bookingID}}, {new: true})     
+            .then(() => {
+                res.redirect("/user/");
+            }) 
          })
          .catch((err) => console.log(err));
 });

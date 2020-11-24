@@ -25,6 +25,7 @@ function SearchResults(props) {
           </div>
       <h1>Search Results</h1>
       <div>
+        
         {props.spaces.map((spaceObj, i) => {
                 return (
                   <SpaceCard space={spaceObj} key={i}>

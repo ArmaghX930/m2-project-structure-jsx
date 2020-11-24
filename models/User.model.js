@@ -11,7 +11,7 @@ const userSchema = new Schema (
     imageUrl: String,
     dateOfBirth: String,
     phoneNumber: [{type: String}],
-    //bookingHistory: [{type: Schema.Types.ObjectId, ref:"Booking"}],
+    bookings: [{type: Schema.Types.ObjectId, ref:"Booking"}],
     isProvider: Boolean,
     spaces: [{type: Schema.Types.ObjectId, ref:"Space"}],
     //reviews: [{reviewID: {type: Schema.Types.ObjectId, ref:"Review"}}]

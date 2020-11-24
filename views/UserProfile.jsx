@@ -1,5 +1,6 @@
 const React = require("react");
 const Layout = require("./Layout");
+const BookingCard = require("./components/BookingCard");
 
 function UserProfile(props) {
   return (
@@ -10,8 +11,8 @@ function UserProfile(props) {
           <article>
             <div>
               <img src={props.user.imageUrl} alt="Cannot display image"/>
-              <h4>Account Information</h4>
             </div>
+            <h4>Account Information</h4>
             <table>
                 <thead>
                   <th>Your Account Info</th>
@@ -58,21 +59,17 @@ function UserProfile(props) {
         </section>
             
         <section>
-          <article>
-            <h4>Booking History</h4>
+            <h4>Your Bookings</h4>
             <div>
-              <div>BookingCard</div>
-              <div>BookingCard</div>
-              <div>BookingCard</div>
+              {props.user.bookings
+              ? props.user.bookings.map((booking, i) => {
+                return (
+                  <BookingCard key={i} booking={booking}></BookingCard>
+                )
+              })
+              : <h2>You Have Not Confirmed Any Bookings Yet</h2>
+            }
             </div>
-          </article>
-          <article>
-            <h4>Upcoming Bookings</h4>
-            <div>
-              <div>BookingCard</div>
-              <div>BookingCard</div>
-            </div>
-          </article>
         </section>
       </main>
     </Layout>);  
