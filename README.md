@@ -114,13 +114,13 @@ Booking Model
 {
         clientID: {type: Schema.Types.ObjectId, ref:"User"},
         spaceID: {type: Schema.Types.ObjectId, ref:"Space"},
-        startDate: Date,
-        endDate: Date,
+        startDate: String,
+        endDate: String,
         durationInHours: Number,
         priceAmount: Number,
-        discount: { type: Number, max: 1, min: 0, default: 0 },
+        discount: Number,
         cancelled: {
-            date: Date, 
+            date: String, 
             cancelledBy: {type: Schema.Types.ObjectId, ref:"User"}, 
             refund: {type:Number, default: 0}
         },

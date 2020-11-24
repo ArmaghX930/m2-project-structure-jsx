@@ -156,7 +156,21 @@ userRouter.post("/space/delete/:id", (req, res, next) => {
     .catch((err) => console.log(err));
 })
 
-// userRouter.post("/:id/space/:id/book", (req, res, next) => {
+
+userRouter.get("/space/book/:id", (req, res, next) => {
+    
+    const user = req.session.currentUser;
+    const spaceId = req.params.id;
+
+    Space.findById(spaceId)
+         .then((spaceObj) => {
+             const props = {user: user, space: spaceObj};
+             res.render('CreateBooking', props)
+         })
+         .catch((err) => console.log(err));
+});
+
+// userRouter.post("/space/book/:id", (req, res, next) => {
 //     // Creates a Booking and Redirects User to their Profile Page
 //     res.render("User");
 // });

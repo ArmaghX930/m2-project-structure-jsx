@@ -1,7 +1,5 @@
 const React = require("react");
 const Layout = require("./Layout");
-const Space = require("../models/Space.model");
-const Card = require("./components/SpaceCard");
 
 function CreateSpace(props) {
   return (
