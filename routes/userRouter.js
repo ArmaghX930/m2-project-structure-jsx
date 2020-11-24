@@ -3,6 +3,7 @@ const userRouter = express.Router();
 const app = require("../app");
 const Space = require("../models/Space.model");
 const User = require("../models/User.model");
+const Booking = require("../models/Booking.model");
 
 
 userRouter.get("/", (req, res, next) => {
@@ -163,17 +164,37 @@ userRouter.get("/space/book/:id", (req, res, next) => {
     const spaceId = req.params.id;
 
     Space.findById(spaceId)
+         .populate('providerID')
          .then((spaceObj) => {
              const props = {user: user, space: spaceObj};
+
              res.render('CreateBooking', props)
          })
          .catch((err) => console.log(err));
 });
 
-// userRouter.post("/space/book/:id", (req, res, next) => {
-//     // Creates a Booking and Redirects User to their Profile Page
-//     res.render("User");
-// });
+userRouter.post("/space/book/:id", (req, res, next) => {
+    // Creates a Booking and Redirects User to their Profile Page
+    const clientID = req.session.currentUser._id;
+    const spaceID = req.params.id;
+    const {startDate, startTime} = req.body;
+
+    Space.findById(spaceID)
+         .then((spaceObj) => {
+             console.log(spaceObj);
+             const {pricePerHour, discount} = spaceObj;
+             const priceWithDiscount = pricePerHour * ( 1 - discount );
+             return (pricePerHour, discount, priceWithDiscount);
+         })
+         .then((pricePerHour, discount, priceWithDiscount) => {
+            const pr = Booking.create({clientID, spaceID, startDate, startTime, pricePerHour, discount, priceWithDiscount});
+            return pr;
+         })
+         .then(() => {
+            res.redirect("/user/");
+         })
+         .catch((err) => console.log(err));
+});
 
 // userRouter.post("/:id/booking/:id/cancel", (req, res, next) => {
 //     // Cancels the Booking and Refreshes User's Profile Page

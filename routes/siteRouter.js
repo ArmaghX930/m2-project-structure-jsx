@@ -59,6 +59,8 @@ siteRouter.get("/space/:id", (req, res, next) => {
     Space.findById(spaceId)
         .populate('providerID')
         .then((spaceObj) => {
+
+            console.log(spaceObj);
             const props = {user: userObj, space: spaceObj};
             res.render("ViewSpace", props);
         })

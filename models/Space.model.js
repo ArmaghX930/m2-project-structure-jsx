@@ -11,7 +11,7 @@ const spaceSchema = new Schema (
     city: String,
     contactInfo: String,
     capacity: Number,
-    providerID: [{type: Schema.Types.ObjectId, ref:"User"}],
+    providerID: {type: Schema.Types.ObjectId, ref:"User"},
     rating: Number,
     isActive: Boolean,
     imageUrl: [{type: String}],
