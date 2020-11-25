@@ -12,18 +12,14 @@ function CreateSpace(props) {
         <label htmlFor="address">Address</label><br/>
         <input type="text" name="address"/>
         <br/>
-        <label htmlFor="coordinates">Provide the Location Coordinates to Display the Space on the Map(optional)</label><br/>
-        <input type="text" name="longitude" placeholder="Longitude"/> <br/>
-        <input type="text" name="latitude" placeholder="Latitude"/> 
-        <br/>
         <label htmlFor="city">City</label><br/>
-        <input type="text" name="city"/>
+        <input type="text" name="city" required/>
         <br/>
         <label htmlFor="contactInfo">Contact Details</label><br/>
         <textarea name="contactInfo" rows="3" cols="30" maxlength="90"placeholder="Phone Number, Website Link, Instagram @, etc"/>
         <br/>
         <label htmlFor="capacity">Maximum Capacity</label><br/>
-        <input type="number" name="capacity" min="1"/><span> People </span>
+        <input type="number" name="capacity" min="1" required/><span> People </span>
         <br/>
         <label htmlFor="welcomePhrase">Welcome Phrase</label><br/>
         <textarea name="welcomePhrase" rows="2" cols="30" maxlength="60"></textarea>
@@ -55,13 +51,16 @@ function CreateSpace(props) {
         <textarea name="description" rows="10" cols="50" maxlength="500"></textarea>
         <br/>
         <label htmlFor="pricePerHour">Hourly Price</label><br/>
-        <input type="number" name="pricePerHour" min="0"/><span>€</span>
+        <input type="number" name="pricePerHour" min="0" required/><span>€</span>
         <br/>
         <label htmlFor="discount">Discount</label><br/>
         <input type="number" name="discount" min="0" max="100" value="0"/><span> %</span>
         <br/>
-        {/* <label htmlFor="imageUrl">Photo</label><br/>
-        <input type="file" name="imageUrl"/><br/> */}
+        <label htmlFor="availToday">Available Today</label><br/>
+        <input type="checkbox" name="availToday" value="true" />
+        <br/>
+        <label htmlFor="imageUrl">Photo</label><br/>
+        <input type="file" name="imageUrl"/><br/>
         
         <button type="submit">Publish</button>
       </form>

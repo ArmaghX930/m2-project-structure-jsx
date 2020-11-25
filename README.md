@@ -97,6 +97,7 @@ Space Model
     "providerID": [{type: Schema.Types.ObjectId, ref:"User"}],
     "rating": Number,
     "isActive": Boolean,
+    "availToday": Boolean,
     "imageUrl": [String],
     "welcomePhrase": String,
     "amenities": [{type: String, enum: ['WiFi', 'WC', 'Coffee Machine', 'Refrigerator', 'Climate Control', 'Phone Booth', 'Terrace', 'Indoor Smoking Patio', 'Ergonomic Equipment', 'Kitchen', 'Canteen']}],

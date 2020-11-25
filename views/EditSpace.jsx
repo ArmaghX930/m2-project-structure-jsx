@@ -5,21 +5,25 @@ function EditSpace(props) {
     return (
         <Layout title={`Edit ${props.space.title}`} user={props.user}>
             <h1>Edit Space</h1>
-                <form action={`/user/space/edit/${props.space._id}`} method="POST">
+                <form action={`/user/space/edit/${props.space._id}`} method="POST" encType="multipart/form-data">
                     <label htmlFor="title">Title</label><br/>
                     <input type="text" name="title" value={props.space.title}/>
                     <br/>
                     <label htmlFor="address">Address</label><br/>
                     <input type="text" name="address" value={props.space.address}/>
                     <br/>
+                    <label htmlFor="coordinates">Provide the Location Coordinates to Display the Space on the Map(optional)</label><br/>
+                    <input type="text" name="longitude" placeholder="Longitude" value={props.space.coordinates[0]}/> <br/>
+                    <input type="text" name="latitude" placeholder="Latitude" value={props.space.coordinates[1]}/> 
+                    <br/>
                     <label htmlFor="city">City</label><br/>
-                    <input type="text" name="city" value={props.space.city}/>
+                    <input type="text" name="city" required value={props.space.city}/>
                     <br/>
                     <label htmlFor="contactInfo">Contact Details</label><br/>
                     <textarea name="contactInfo" rows="3" cols="30" maxlength="90"placeholder="Phone Number, Website Link, Instagram @, etc" value={props.space.contactInfo}/>
                     <br/>
                     <label htmlFor="capacity">Maximum Capacity</label><br/>
-                    <input type="number" name="capacity" min="1" value={props.space.capacity}/><span> People </span>
+                    <input type="number" name="capacity" min="1" required value={props.space.capacity}/><span> People </span>
                     <br/>
                     <label htmlFor="welcomePhrase">Welcome Phrase</label><br/>
                     <textarea name="welcomePhrase" rows="2" cols="30" maxlength="60" value={props.space.welcomePhrase}></textarea>
@@ -84,16 +88,24 @@ function EditSpace(props) {
                     <textarea name="description" rows="10" cols="50" maxlength="500"></textarea>
                     <br/>
                     <label htmlFor="pricePerHour">Hourly Price</label><br/>
-                    <input type="number" name="pricePerHour" min="0" value={props.space.pricePerHour}/><span>€</span>
+                    <input type="number" name="pricePerHour" min="0" required value={props.space.pricePerHour}/><span>€</span>
                     <br/>
                     <label htmlFor="discount">Discount</label><br/>
                     <input type="number" name="discount" min="0" max="100" value="0" value={props.space.discount * 100}/><span> %</span>
                     <br/>
                     <p>Current Image</p>
-                    <img width="120px" src={props.space.imageUrl[0]} /><br/>
-                    <label htmlFor="imageUrl">New Image URL</label><br/>
-                    <input type="string" name="imageUrl" defaultValue={props.space.imageUrl[0]}/> <br/>
+                    <img width="120px" src={props.space.imageUrl} /><br/>
+                    <label htmlFor="imageUrl">Update Photo</label><br/>
+                    <input type="file" name="imageUrl" /> <br/>
+                    <label htmlFor="availToday">Available Today</label><br/>
+                    {props.space.availToday 
+                    ? <input type="checkbox" name="availToday" checked="checked" value="true" />
+                    : <input type="checkbox" name="availToday" value="true" />
+                    }
+                    
+                    <br/>
                     <button type="submit">Publish</button>
+                    
                 </form>
         </Layout>
 

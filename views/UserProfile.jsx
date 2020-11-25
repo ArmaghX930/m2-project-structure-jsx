@@ -43,7 +43,7 @@ function UserProfile(props) {
               ? <div>
                   {props.user.spaces.map((space, i) => {
                     return(<div key={i}>
-                      <img width="40px" src={space.imageUrl[0]} />
+                      <img width="40px" src={space.imageUrl} />
                         <a href={`/space/${space._id}`}><h6> {space.title} </h6></a>
                     </div>)
                   })}
@@ -61,13 +61,13 @@ function UserProfile(props) {
         <section>
             <h4>Your Bookings</h4>
             <div>
-              {props.user.bookings
+              {props.user.bookings[0]
               ? props.user.bookings.map((booking, i) => {
                 return (
                   <BookingCard key={i} booking={booking}></BookingCard>
                 )
               })
-              : <h2>You Have Not Confirmed Any Bookings Yet</h2>
+              : <h5>You Have Not Confirmed Any Bookings Yet</h5>
             }
             </div>
         </section>

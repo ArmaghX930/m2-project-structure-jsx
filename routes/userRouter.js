@@ -19,7 +19,7 @@ userRouter.get("/", (req, res, next) => {
         }
     })
     .then((user) => {
-        console.log(user.bookings);
+        console.log(user.bookings[0]);
         const props = {user: user};
         res.render("UserProfile", props);
     })
@@ -38,16 +38,23 @@ userRouter.get("/edit", (req, res, next) => {
 
 userRouter.post("/edit", parser.single("imageUrl"), (req, res, next) => {
     const userid = req.session.currentUser._id;
-    // const imageUrl = req.file.secure_url;
+    let profilePic;
+
     let { username, dateOfBirth, phoneNumber } = req.body;
     if (!dateOfBirth) {
         dateOfBirth = req.session.currentUser.dateOfBirth;
     }
-    User.findByIdAndUpdate(userid, { username, dateOfBirth, phoneNumber }, {new: true})
-    .then((updatedUser) => {
-        res.redirect("/user");
-    })
-    .catch((err) => console.log(err));
+    User.findById(userid)
+        .then((userObj) => {
+            req.file ? profilePic = req.file.url : profilePic = userObj.imageUrl
+            const updatedUser = {username, dateOfBirth, phoneNumber, imageUrl: profilePic};
+            const pr = User.update({_id: userid}, updatedUser, {new: true});
+            return pr;
+        })
+        .then(() => {
+            res.redirect("/user");
+        })
+        .catch((err) => console.log(err));
 });
 
 userRouter.get("/delete", (req, res, next) => {
@@ -66,17 +73,19 @@ userRouter.get("/delete", (req, res, next) => {
      res.render("CreateSpace", props);
  });
 
- userRouter.post("/space/add", (req, res, next) => {
-    const {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
+ userRouter.post("/space/add", parser.single("imageUrl"), (req, res, next) => {
+    const {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency} = req.body;
+    let availToday = req.body.availToday;
+    availToday ? availToday : availToday = false;
     const discount = req.body.discount / 100;
+    let imageUrl;
+    req.file ? imageUrl = req.file.secure_url : imageUrl = "";
     const providerID = req.session.currentUser._id;
-    const coordinates = [Number(req.body.longitude), Number(req.body.latitude)];
 
     Space.create({
         title, 
         address,
         city,
-        coordinates,
         amenities, 
         contactInfo, 
         capacity, 
@@ -84,8 +93,9 @@ userRouter.get("/delete", (req, res, next) => {
         description, 
         pricePerHour, 
         priceCurrency, 
-        discount, 
+        discount,
         imageUrl,
+        availToday,
         providerID
     })
     .then((createdSpace) => {
@@ -123,16 +133,29 @@ userRouter.get("/space/edit/:id", (req, res, next) => {
     .catch((err) => console.log(err));
 });
 
-userRouter.post("/space/edit/:id", (req, res, next) => {
+userRouter.post("/space/edit/:id", parser.single("imageUrl"), (req, res, next) => {
     const spaceid = req.params.id;
-    const {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl} = req.body;
+    const {title, address, city, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency} = req.body;
+    let availToday = req.body.availToday;
+    availToday ? availToday : availToday = false;
+    let amenities = req.body.amenities;
+    amenities ? amenities : amenities = [];
     const discount = req.body.discount / 100;
-    Space.findByIdAndUpdate(spaceid, {title, address, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl, discount}, {new: true})
-    .then((updatedSpace) => {
-        const spaceId = updatedSpace._id
-        res.redirect(`/space/${spaceId}`);
-    })
-    .catch((err) => console.log(err));
+    const coordinates = [Number(req.body.longitude), Number(req.body.latitude)];
+    let spacePic;
+    Space.findById(spaceid)
+        .then((spaceObj) => {
+            req.file ? spacePic = req.file.secure_url : spacePic = spaceObj.imageUrl;
+            const updatedSpace = {title, address, coordinates, city, amenities, contactInfo, capacity, welcomePhrase, description, pricePerHour, priceCurrency, imageUrl: spacePic, discount, availToday};
+            const pr = Space.findByIdAndUpdate(spaceid, updatedSpace, {new: true});
+            return pr;
+        })
+        .then((updatedSpace) => {
+            console.log("UPDATED SPACE", updatedSpace);
+            const spaceId = updatedSpace._id
+            res.redirect(`/space/${spaceId}`);
+        })
+        .catch((err) => console.log(err));
 });
 
 userRouter.get("/space/delete/:id", (req, res, next) => {

@@ -20,6 +20,8 @@ function SearchResults(props) {
               <input type="Number" name="pricePerHour" value={props.search.pricePerHour}/><span>€ per hour</span><br/>
               <label htmlFor="capacity">Capacity </label>
               <input type="Number" name="capacity" value={props.search.capacity}/><span> people</span><br/>
+              <label htmlFor="availToday">Available Today</label>
+              <input type="checkbox" name="availToday" value="true" /><br/>
               <button type="submit">Search</button>
             </form>
           </div>

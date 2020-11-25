@@ -30,7 +30,10 @@ siteRouter.get("/", (req, res, next) => {
 
 siteRouter.get("/search", (req, res, next) => {
     let {city, pricePerHour, capacity} = req.query;
-    const searchQuery = {city, pricePerHour, capacity};
+    let availToday = req.query.availToday;
+    availToday ? availToday = true : availToday = false;
+    console.log(availToday);
+    const searchQuery = {city, pricePerHour, capacity, availToday};
 
     pricePerHour ? pricePerHour : pricePerHour = 10000;
     capacity ? capacity : capacity = 0;    
@@ -47,9 +50,8 @@ siteRouter.get("/search", (req, res, next) => {
          })
          .then((citiesArr) => {
 
-            Space.find({$and:[{city: city}, {pricePerHour:{$lte:pricePerHour}}, {capacity:{$gte:capacity}}]})
+            Space.find({$and:[{city: city}, {pricePerHour:{$lte:pricePerHour}}, {capacity:{$gte:capacity}}, {availToday: availToday}]})
             .then((resultsArr) => {
-                console.log(resultsArr);
                const props = {user: req.session.currentUser, spaces: resultsArr, search: searchQuery, cities: citiesArr};
             
                res.render("SearchResults", props);

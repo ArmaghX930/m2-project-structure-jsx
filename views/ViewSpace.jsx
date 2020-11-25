@@ -10,6 +10,12 @@ function ViewSpace (props) {
                     <h3> {props.space.welcomePhrase} </h3>
                 </div>
                 <section>
+                    {props.space.availToday
+                    ?   <div>
+                            <h4>Available Today</h4>
+                        </div>
+                    : null
+                    }
                     <aside>
                         <p>Provided by {props.space.providerID.username}</p>
                         <p>Contact Information:</p>
@@ -23,12 +29,13 @@ function ViewSpace (props) {
                         <p> Price with discount: {props.space.pricePerHour * (1 - props.space.discount)}€ per hour</p>
                         <p> Amenities: </p>
                         <ul>
-                            {
-                            props.space.amenities.map((amenity, i) => {
+                            { props.space.amenities[0]
+                            ? props.space.amenities.map((amenity, i) => {
                                 return(
                                     <li key={i}>{amenity}</li>
                                 )
                             })
+                            : <li>No amenities specified by the Provider</li>
                             }
                         </ul>
                         {(props.space.providerID._id == props.user._id)
@@ -46,13 +53,7 @@ function ViewSpace (props) {
                         }
                     </aside>
                     <div>
-                        {
-                        props.space.imageUrl.map((image, i) => {
-                            return(
-                                <img key={i} src={image} />
-                            )
-                        })
-                        }
+                        <img src={props.space.imageUrl}></img>
                     </div>
                 </section>
                 <h3> {props.space.address} </h3>
