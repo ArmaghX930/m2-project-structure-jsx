@@ -75,13 +75,13 @@ a:active {
   color: black;
 }
 
-
-
-#layout-header {
-  height: 120px;
-  margin-bottom: 3vh;
-  font-size: 3vw;
-  border-radius: 10px;
+.layout {
+  background-color: rgba(150, 93, 77, 0.4);
+  padding: 0 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .layout-profile-pic {
@@ -89,6 +89,80 @@ a:active {
   height: 70px;
   border: 3px solid #965d4d;
   border-radius: 50%;
+}
+
+.space-card {
+  width: 350px;
+  height: 150px;
+  border: 3px solid #965d4d;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.space-card:hover {
+  border: 5px solid #3d7065;
+  width: 354px;
+  height: 154px;
+  margin: 6px;
+}
+
+.click-btn {
+  width: 100px;
+  height: 50px;
+  background-color: #965d4d;
+  font-size: 1.5em;
+  border-radius: 7px;
+  font-family: 'Didact Gothic', sans-serif;
+}
+
+.click-btn:active {
+  width: 97px;
+  height: 47px;
+}
+
+.nonclick-btn {
+
+}
+
+#search-form {
+  background-color: rgba(150, 93, 77, 0.2);
+  padding: 95px 25px 97px 25px;
+  text-align: center;
+  width: 25%;
+  height: 220px;
+}
+
+#search-form input {
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+#search-form input:focus {
+  border: 3px solid #3d7065;
+  margin-bottom: 7px;
+}
+
+#search-form input[type="number"]::placeholder {  
+  text-align: center; 
+} 
+
+
+#faq {
+  font-size: 1.5vw;
+  font-weight: bold;
+}
+
+#layout-header {
+  height: 120px;
+  margin-bottom: 3vh;
+  font-size: 3vw;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
 #login-header-div {
@@ -99,17 +173,56 @@ a:active {
   align-items: center;
 }
 
-.layout {
-  background-color: #EAE8CA;
-  padding: 0 50px;
+#home-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#intro-text {
+  margin: 30px;
+}
+
+#search-container {
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
+#space-container {
+  width: 65%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
 
+#provider-ad {
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-#faq {
+#provider-ad p {
+  margin-bottom: 30px;
+}
 
+#become-provider-btn {
+  width: 450px;
+  height: 100px;
+  text-align: center;
+  background-color: rgba(150, 93, 77, 0.4);
+  padding: 30px 0 15px;
+  font-size: 3vw;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+#home-hr {
+  margin: 50px auto;
+  width: 70%;
 }

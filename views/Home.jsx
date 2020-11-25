@@ -6,12 +6,12 @@ function Home(props) {
   return (
     <Layout title="spaceOut" user={props.user ? props.user : ""}>
       <main>
-        <section>
-          <h2>Description that blah blah</h2>
-          <div>
-            <div id="search-container">
+        <section id="home-intro">
+          <h2 id="intro-text">Description that blah blah</h2>
+          <div id="search-container">
+            <div id="search-form">
               <form action="/search" method="GET">
-                <label htmlFor="city">City </label>
+                <label htmlFor="city">City </label> <br/>
                 <input list="cities" name="city" />
                 <datalist id="cities">
                   {props.cities.map((city, i) => {
@@ -20,13 +20,13 @@ function Home(props) {
                       )
                   })}
                 </datalist><br/>
-                <label htmlFor="pricePerHour">Maximum Price </label>
-                <input type="Number" name="pricePerHour"/><span>€ per hour</span><br/>
-                <label htmlFor="capacity">Capacity </label>
-                <input type="Number" name="capacity"/><span> people</span><br/>
-                <label htmlFor="availToday">Available Today</label>
+                <label htmlFor="pricePerHour">Maximum Price </label> <br/>
+                <input type="Number" name="pricePerHour" placeholder="€ per hour"/><br/>
+                <label htmlFor="capacity">Capacity </label> <br/>
+                <input type="Number" name="capacity" placeholder="how many people"/><br/>
+                <label htmlFor="availToday">Available Today</label> 
                 <input type="checkbox" name="availToday" value="true" /><br/>
-                <button type="submit">Search</button>
+                <button class="click-btn" type="submit">Search</button>
               </form>
             </div>
             <div id="space-container">
@@ -39,6 +39,7 @@ function Home(props) {
             </div>
           </div>
         </section>
+        <hr id="home-hr"/>
         <article id="provider-ad">
           <p>aggressive provider recruitment</p>
           {props.user 
@@ -46,12 +47,6 @@ function Home(props) {
           : <a href="/auth"><div id="become-provider-btn">BECOME SPACE PROVIDER</div></a>
           }
         </article>
-        <section>
-          <div className="space-card">SPACE CARD COMPONENT</div>
-          <div className="space-card">SPACE CARD COMPONENT</div>
-          <div className="space-card">SPACE CARD COMPONENT</div>
-          <div className="space-card">SPACE CARD COMPONENT</div>
-        </section>
       </main>
       
     </Layout>)

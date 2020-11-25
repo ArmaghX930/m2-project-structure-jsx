@@ -14,7 +14,7 @@ function Layout(props) {
       </head>
       <body>
         <header id="layout-header" class="layout">
-          <a href="/"><div> <img src="/images/logo.png" width="200"/> </div></a>
+          <a href="/"><div> <img src="/images/logo.png" width="180"/> </div></a>
           <h3>Self explanatory catchphrase</h3>
           {props.user 
           ? ( <div id="login-header-div">
