@@ -7,7 +7,7 @@ function Home(props) {
     <Layout title="spaceOut" user={props.user ? props.user : ""}>
       <main>
         <section id="home-intro">
-          <h2 id="intro-text">Description that blah blah</h2>
+          <h2 id="intro-text">Description that blah blah blah</h2>
           <div id="search-container">
             <div id="search-form">
               <form action="/search" method="GET">
