@@ -8,11 +8,10 @@ function Layout(props) {
         <meta name="viewport" content="width=device-width, initial-scale=1" /> 
         <title> {props.title ? props.title : "spaceOut"} </title>
 
-        {props.pageCSS ? <link rel="stylesheet" href={props.pageCSS}/> : null }
-
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet"/>
         <link rel="stylesheet" href="/stylesheets/style.css" />
+        {props.pageCSS ? <link rel="stylesheet" href={props.pageCSS}/> : null }
       </head>
       <body>
         <header id="layout-header" class="layout">
@@ -22,7 +21,7 @@ function Layout(props) {
           ? ( <div id="login-header-div">
                 <a href={`/user`}>
                   <div>
-                    <img class="layout-profile-pic" src={props.user.imageUrl}/>
+                    {props.user.imageUrl ? <img class="layout-profile-pic" src={props.user.imageUrl}/> : <img class="layout-profile-pic" src="/images/profile-image-placeholder.png"/>}
                   </div>
                 </a>
                 <a href="/auth/logout">

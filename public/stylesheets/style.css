@@ -45,9 +45,9 @@ table {
 /* Our style starts here */
 
 body {
-  background-color: #1E344A;
+  background-color: #F4F0E9;
   font-family: 'Didact Gothic', sans-serif;
-  color:  #EDDCBD;
+  color:  #424242;
 }
 
 main {
@@ -60,8 +60,12 @@ footer {
   margin-top: 3vh;
 }
 
+footer h6 {
+  color: #424242;
+}
+
 a {
-  color: black;
+  color:#424242;
   text-decoration: none;
 }
 
@@ -70,16 +74,14 @@ a:hover {
 }
 
 a:visited {
-  color: black;
+  color:#424242;
 }
 
 a:active {
-  color: black;
+  color:#424242;
 }
 
 form {
-  color: black;
-  font-weight: bold;
   text-align: center;
 }
 
@@ -93,13 +95,13 @@ form input:focus {
   margin: 9px 4px;
 }
 
-form input[type="number"]::placeholder {  
+form input[type="number"]::placeholder, form input[type="email"]::placeholder, form input[type="text"]::placeholder, form input[type="password"]::placeholder {  
   text-align: center; 
 } 
 
 .layout {
-  color: #1E344A;
-  background-color: #65ABAA;
+  color: #F4F0E9;
+  background-color:  rgba(20, 54, 50, 0.6);
   padding: 0 50px;
   display: flex;
   flex-direction: row;
@@ -121,7 +123,7 @@ form input[type="number"]::placeholder {
 .space-card {
   width: 300px;
   height: 150px;
-  border: 3px solid #65ABAA;
+  border: 2px solid  rgba(20, 54, 50, 0.5);
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
@@ -129,14 +131,13 @@ form input[type="number"]::placeholder {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  background-color: #FDCB7C;
 }
 
 .space-card:hover {
-  border: 5px solid #65ABAA;
-  width: 304px;
-  height: 154px;
-  margin: 6px;
+  border: 5px solid rgba(20, 54, 50, 0.7);
+  width: 306px;
+  height: 156px;
+  margin: 4px;
 }
 
 .space-card h3 {
@@ -151,10 +152,14 @@ form input[type="number"]::placeholder {
   border: 1px solid black;
 }
 
+.space-card hr {
+  color: gray;
+}
+
 .click-btn {
   width: 100px;
   height: 50px;
-  background-color: #CA5548;
+  background-color: #E4AB51;
   font-size: 1.2em;
   border-radius: 7px;
   font-family: 'Didact Gothic', sans-serif;
@@ -167,15 +172,24 @@ form input[type="number"]::placeholder {
 }
 
 .nonclick-btn {
-
+  width: 100px;
+  height: 50px;
+  /* background-color: #E4AB51; */
+  font-size: 1.2em;
+  border-radius: 7px;
+  font-family: 'Didact Gothic', sans-serif;
+  margin-top: 20px;
 }
 
+
 #search-form {
-  background-color: #E4AB51;
+  background-color: rgba(20, 54, 50, 0.7);
+  color: #F4F0E9;
   padding: 95px 25px 97px 25px;
   text-align: center;
   width: 25%;
   height: 220px;
+  border-radius: 10px;
 }
 
 #faq {
@@ -243,6 +257,7 @@ form input[type="number"]::placeholder {
   height: 100px;
   text-align: center;
   background-color: #A4463B;
+  color: #F4F0E9;
   padding: 30px 0 15px;
   font-size: 3vw;
   font-weight: bold;
@@ -284,7 +299,7 @@ form input[type="number"]::placeholder {
 }
 
 #auth-container form {
-  color: #EDDCBD;
+  color: black;
   margin-top: 30px;
 }
 

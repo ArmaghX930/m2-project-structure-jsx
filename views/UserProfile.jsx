@@ -4,41 +4,35 @@ const BookingCard = require("./components/BookingCard");
 
 function UserProfile(props) {
   return (
-    <Layout title={`${props.user.username}`} user={props.user}>
-      <h2>This is the profile page of the infamous {props.user.username}</h2>
+    <Layout title={props.user.username} user={props.user} pageCSS="/stylesheets/profile.css">
+      <h2>{props.user.username}</h2>
       <main>
-        <section>
-          <article>
-            <div>
-              <img src={props.user.imageUrl} alt="Cannot display image"/>
-            </div>
-            <h4>Account Information</h4>
-            <table>
-                <thead>
-                  <th>Your Account Info</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Username</td>
-                    <td>{props.user.username}</td>
-                  </tr>
-                  <tr>
-                    <td>Date of Birth</td>
-                    <td>{props.user.dateOfBirth}</td>
-                  </tr>
-                  <tr>
-                    <td>Phone Number</td>
-                    <td>{props.user.phoneNumber}</td>
-                  </tr>
-                </tbody>
-            </table>
-            <div>
-              <a href="/user/edit"><div>EDIT ACCOUNT</div></a>
-              <a href="/user/delete"><div>DELETE ACCOUNT</div></a>
-            </div>
-          </article>
-          <aside>
-            <h4>Your Listed Spaces</h4>
+        <section class="profile-info">
+        {props.user.imageUrl ? <img className="profile-pic" src={props.user.imageUrl}/> : <img className="profile-pic" src="/images/profile-image-placeholder.png"/>}
+        <article id="profile-article">
+          <h3>Account Information</h3>
+          <table>
+              <thead>
+                <th>Username</th>
+                <th>{props.user.username}</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Date of Birth</td>
+                  <td>{props.user.dateOfBirth}</td>
+                </tr>
+                <tr>
+                  <td>Phone Number</td>
+                  <td>{props.user.phoneNumber}</td>
+                </tr>
+              </tbody>
+          </table>
+          <div id="btn-div">            
+            <a href="/user/edit"><button className="profile-btn">Edit Account</button></a>
+          </div>
+        </article>
+        <aside>
+          <h3>Your Listed Spaces</h3>
             { props.user.isProvider
               ? <div>
                   {props.user.spaces.map((space, i) => {
@@ -51,15 +45,15 @@ function UserProfile(props) {
                 </div>  
               : ( <div>
                     <h5>You Haven't Listed Any Spaces Yet</h5>
-                    <a href="/user/space/add"><div>Become a Provider</div></a>
+                    <a href="/user/space/add"><div id="become-provider">Become a Provider</div></a>
                 </div>
                  )
             }
-          </aside>
+        </aside>
         </section>
             
         <section>
-            <h4>Your Bookings</h4>
+            <h3>Your Bookings</h3>
             <div>
               {props.user.bookings[0]
               ? props.user.bookings.map((booking, i) => {
@@ -71,6 +65,7 @@ function UserProfile(props) {
             }
             </div>
         </section>
+        <aside id="del-acc-btn"><a href="/user/delete"><button className="delete-btn">Delete Account</button></a></aside>
       </main>
     </Layout>);  
 }
