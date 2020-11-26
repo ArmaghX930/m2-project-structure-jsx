@@ -45,7 +45,9 @@ table {
 /* Our style starts here */
 
 body {
+  background-color: #1E344A;
   font-family: 'Didact Gothic', sans-serif;
+  color:  #EDDCBD;
 }
 
 main {
@@ -76,7 +78,8 @@ a:active {
 }
 
 .layout {
-  background-color: rgba(150, 93, 77, 0.4);
+  color: #1E344A;
+  background-color: #65ABAA;
   padding: 0 50px;
   display: flex;
   flex-direction: row;
@@ -84,17 +87,21 @@ a:active {
   align-items: center;
 }
 
+.layout h3 {
+  font-size: 3.5vw;
+}
+
 .layout-profile-pic {
   width: 70px;
   height: 70px;
-  border: 3px solid #965d4d;
+  border: 5px solid #E4AB51;
   border-radius: 50%;
 }
 
 .space-card {
-  width: 350px;
+  width: 300px;
   height: 150px;
-  border: 3px solid #965d4d;
+  border: 3px solid #65ABAA;
   border-radius: 5px;
   margin: 10px;
   padding: 10px;
@@ -102,19 +109,32 @@ a:active {
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  background-color: #FDCB7C;
 }
 
 .space-card:hover {
-  border: 5px solid #3d7065;
-  width: 354px;
+  border: 5px solid #65ABAA;
+  width: 304px;
   height: 154px;
   margin: 6px;
+}
+
+.space-card h3 {
+  font-weight: bold;
+}
+
+.space-card p {
+  font-size: 0.8em;
+}
+
+.space-card img {
+  border: 1px solid black;
 }
 
 .click-btn {
   width: 100px;
   height: 50px;
-  background-color: #965d4d;
+  background-color: #CA5548;
   font-size: 1.5em;
   border-radius: 7px;
   font-family: 'Didact Gothic', sans-serif;
@@ -130,7 +150,9 @@ a:active {
 }
 
 #search-form {
-  background-color: rgba(150, 93, 77, 0.2);
+  color: black;
+  font-weight: bold;
+  background-color: #E4AB51;
   padding: 95px 25px 97px 25px;
   text-align: center;
   width: 25%;
@@ -138,13 +160,14 @@ a:active {
 }
 
 #search-form input {
-  margin-bottom: 10px;
+  margin: 10px 0;
   border-radius: 5px;
 }
 
 #search-form input:focus {
   border: 3px solid #3d7065;
-  margin-bottom: 7px;
+  margin-bottom: 9px;
+  margin-top: 9px;
 }
 
 #search-form input[type="number"]::placeholder {  
@@ -193,7 +216,8 @@ a:active {
 }
 
 #space-container {
-  width: 65%;
+  width: 700px;
+  height: 400px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -215,7 +239,7 @@ a:active {
   width: 450px;
   height: 100px;
   text-align: center;
-  background-color: rgba(150, 93, 77, 0.4);
+  background-color: #A4463B;
   padding: 30px 0 15px;
   font-size: 3vw;
   font-weight: bold;
@@ -225,4 +249,16 @@ a:active {
 #home-hr {
   margin: 50px auto;
   width: 70%;
+}
+
+#avail-today-flag {
+  background-color: #CA5548;
+  border: 1px solid black;
+  border-radius: 7px;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 5px;
 }

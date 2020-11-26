@@ -6,19 +6,31 @@ function SpaceCard(props) {
       <a href={`/space/${props.space._id}`}>
       <div>
       <h3> {props.space.title} </h3>
-      {props.space.availToday
-                    ?   <div>
-                            <h4>Available Today</h4>
-                        </div>
-                    : null
-                    }
+      <hr/>
       <p>Available for up to {props.space.capacity} people</p>
+      <hr/>
       <p>{props.space.pricePerHour}€ per hour</p>
+      <hr/>
       <p>{props.space.address}</p>
-      <p>{props.space.city}</p>
+      <hr/>
+      <h3>{props.space.city}</h3>
       </div>
       </a>
-      <img src={props.space.imageUrl} width="200px" height="100px"/>
+      <div>
+        {props.space.availToday
+                      ?   <div id="avail-today-flag">
+                              <p>Available Today</p>
+                          </div>
+                      : null
+                      }
+        {props.space.imageUrl 
+          ? <img src={props.space.imageUrl} width="130px" height="100px"/>
+          : <img src="/images/office-default-img.png" width="130px" height="100px"/>
+        
+        }
+        
+      </div>
+      
     </div>
   );
 }

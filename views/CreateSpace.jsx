@@ -7,7 +7,7 @@ function CreateSpace(props) {
       <h1>Create Space</h1>
       <form action="/user/space/add" method="POST" encType="multipart/form-data">
         <label htmlFor="title">Title</label><br/>
-        <input type="text" name="title"/>
+        <input type="text" name="title" maxlength="20"/>
         <br/>
         <label htmlFor="address">Address</label><br/>
         <input type="text" name="address"/>

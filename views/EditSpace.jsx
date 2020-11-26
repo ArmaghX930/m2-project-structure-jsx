@@ -7,7 +7,7 @@ function EditSpace(props) {
             <h1>Edit Space</h1>
                 <form action={`/user/space/edit/${props.space._id}`} method="POST" encType="multipart/form-data">
                     <label htmlFor="title">Title</label><br/>
-                    <input type="text" name="title" value={props.space.title}/>
+                    <input type="text" name="title" value={props.space.title} maxlength="20"/>
                     <br/>
                     <label htmlFor="address">Address</label><br/>
                     <input type="text" name="address" value={props.space.address}/>
