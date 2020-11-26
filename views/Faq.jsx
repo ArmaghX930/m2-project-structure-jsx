@@ -8,15 +8,15 @@ function Faq(props) {
        <h2>Frequently Asked Questions</h2>
         <article>
           <h4>Question</h4>
-          <p>LOREM IPSUM</p>
+          <p>LOREM IPSUM: UPDATED VERSION</p>
         </article>
         <article>
           <h4>Question 2</h4>
-          <p>LOREM IPSUM</p>
+          <p>LOREM IPSUM: UPDATED VERSION</p>
         </article>
         <article>
           <h4>Question 3</h4>
-          <p>LOREM IPSUM</p>
+          <p>LOREM IPSUM: UPDATED VERSION</p>
         </article>
       </main>
     </Layout>
