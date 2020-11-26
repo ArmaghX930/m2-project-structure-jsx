@@ -27,6 +27,13 @@ aside {
     line-height: 20px;
 }
 
+form>label {
+    margin-bottom: 7px 0;
+}
+/* form input {
+    margin-top: 7px 0;
+} */
+
 
 
 
