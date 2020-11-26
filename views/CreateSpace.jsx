@@ -3,7 +3,7 @@ const Layout = require("./Layout");
 
 function CreateSpace(props) {
   return (
-    <Layout title="List New Space" user={props.user}>
+    <Layout title="List New Space" user={props.user} pageCSS="/stylesheets/space.css">
       <h1>Create Space</h1>
       <form action="/user/space/add" method="POST" encType="multipart/form-data">
         <label htmlFor="title">Title</label><br/>
@@ -19,7 +19,7 @@ function CreateSpace(props) {
         <textarea name="contactInfo" rows="3" cols="30" maxlength="90"placeholder="Phone Number, Website Link, Instagram @, etc"/>
         <br/>
         <label htmlFor="capacity">Maximum Capacity</label><br/>
-        <input type="number" name="capacity" min="1" required/><span> People </span>
+        <input type="number" name="capacity" min="1" required/><span> people </span>
         <br/>
         <label htmlFor="welcomePhrase">Welcome Phrase</label><br/>
         <textarea name="welcomePhrase" rows="2" cols="30" maxlength="60"></textarea>

@@ -1,0 +1,29 @@
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2vw;
+    margin: 30px;
+}
+
+h2 {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+article {
+    margin: 20px 0;
+    width: 50%;
+}
+
+article:nth-child(odd) {
+    text-align: left;
+}
+
+article:nth-child(even) {
+    text-align: right;
+}

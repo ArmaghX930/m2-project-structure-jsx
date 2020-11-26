@@ -3,30 +3,23 @@ const Layout = require("./Layout");
 
 function ViewSpace (props) {
     return(
-        <Layout title={props.space.title} user={props.user ? props.user : ""}>
+        <Layout title={props.space.title} user={props.user ? props.user : ""} pageCSS="/stylesheets/space.css">
             <main>
                 <div>
-                    <h2>{props.space.title}</h2>
-                    <h3> {props.space.welcomePhrase} </h3>
+                    <h1>{props.space.title}</h1>
+                    <h1> {props.space.welcomePhrase} </h1>
                 </div>
                 <section>
-                    {props.space.availToday
-                    ?   <div>
-                            <h4>Available Today</h4>
-                        </div>
-                    : null
-                    }
                     <aside>
                         <p>Provided by {props.space.providerID.username}</p>
-                        <p>Contact Information:</p>
-                        <p>{props.space.contactInfo}</p>
-                        <p> Capacity: </p>{props.space.capacity === 1 ? 
-                            <p> {props.space.capacity} person</p>
-                            : <p> {props.space.capacity} people</p>
-                        }
-                        <p> Price: {props.space.pricePerHour}€ per hour </p>
-                        <p> Current discount: {props.space.discount * 100}% </p>
-                        <p> Price with discount: {props.space.pricePerHour * (1 - props.space.discount)}€ per hour</p>
+                        <p>Contact Information: <span>{props.space.contactInfo}</span></p> 
+                        <p> Capacity: {props.space.capacity === 1 ? 
+                            <span>{props.space.capacity} person</span> 
+                            : <span>{props.space.capacity} people</span> 
+                        }</p> 
+                        <p> Price: <span>{props.space.pricePerHour}€ per hour</span></p>
+                        <p> Current discount: <span>{props.space.discount * 100}%</span></p> 
+                        <p> Price with discount: <span>{props.space.pricePerHour * (1 - props.space.discount)}€ per hour</span></p>
                         <p> Amenities: </p>
                         <ul>
                             { props.space.amenities[0]
@@ -38,26 +31,29 @@ function ViewSpace (props) {
                             : <li>No amenities specified by the Provider</li>
                             }
                         </ul>
-                        {(props.space.providerID._id == props.user._id)
-                        ?  ( <div> 
-                                <a href={`/user/space/edit/${props.space._id}`}><div>EDIT SPACE</div></a> 
-                                <a href={`/user/space/delete/${props.space._id}`}><div>DELETE SPACE</div></a>
-                            </div> )
-                        : props.user 
-                        ? (<div> 
-                            <a href={`/user/space/book/${props.space._id}`}><div>BOOK SPACE</div></a>
-                        </div>)
-                        : (<div> 
-                            <a href={`/auth/`}><div>BOOK SPACE</div></a>
-                        </div>)
-                        }
+                        {(!props.user)
+                        ?  <a href={`/auth/`}><button className="profile-btn">Book Space</button ></a>
+                        : props.space.providerID._id == props.user._id
+                        ? <a href={`/user/space/edit/${props.space._id}`}><button className="profile-btn">Edit Space</button></a>
+                        : <a href={`/user/space/book/${props.space._id}`}><button className="profile-btn" >Book Space</button></a>}
                     </aside>
                     <div>
-                        <img src={props.space.imageUrl}></img>
+                        {props.space.availToday
+                            ?   <div class="avail-today">
+                                    <span>Available Today</span>
+                                </div>
+                            : null
+                            }
+                            <img src={props.space.imageUrl}></img>
                     </div>
                 </section>
                 <h3> {props.space.address} </h3>
                 <h4> {props.space.city} </h4>
+                { !props.user
+                ? null
+                : (props.space.providerID._id == props.user._id)
+                ? (<aside id="del-acc-btn"><a href={`/user/space/delete/${props.space._id}`}><button className="delete-btn">Delete Space</button></a></aside>)
+                : null }
             </main>
 
         </Layout>

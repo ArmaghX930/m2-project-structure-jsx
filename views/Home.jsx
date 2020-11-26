@@ -7,7 +7,7 @@ function Home(props) {
     <Layout title="spaceOut" user={props.user ? props.user : ""}>
       <main>
         <section id="home-intro">
-          <h2 id="intro-text">Description that blah blah</h2>
+          <h2 id="intro-text">Description that blah blah blah</h2>
           <div id="search-container">
             <div id="search-form">
               <form action="/search" method="GET">
@@ -29,7 +29,7 @@ function Home(props) {
                 <button class="click-btn" type="submit">Search</button>
               </form>
             </div>
-            <div id="space-container">
+            <div className="space-container">
             {props.spaces.map((spaceObj, i) => {
               return (
                 <SpaceCard space={spaceObj} key={i}>

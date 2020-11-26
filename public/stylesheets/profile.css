@@ -1,0 +1,86 @@
+
+h2 {
+    margin: 50px auto 20px;
+    text-align: center;
+    font-size: 2vw;
+}
+
+h3 {
+    font-size: 1.2em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+form {
+    text-align: left;
+}
+
+.profile-pic {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    border: 3px solid  #E4AB51;
+
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start; 
+    margin-bottom: 70px;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0 10px;
+    text-align: left;
+}
+
+td:nth-child(even), th:nth-child(even) {
+    font-weight: bold;
+    text-align: right;
+}
+
+
+#btn-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+#profile-article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.become-provider {
+    width: 225px;
+    height: 50px;
+    text-align: center;
+    background-color: #A4463B;
+    color: #F4F0E9;
+    padding: 20px 0 0;
+    font-size: 1.5vw;
+    font-weight: bold;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+#del-acc-btn {
+    padding: 0 0 0 1150px;
+}
+
+.space-shortcut {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid rgba(20, 54, 50, 0.5);
+    border-radius: 7px;
+}
