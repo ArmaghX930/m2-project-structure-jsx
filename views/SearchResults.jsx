@@ -4,7 +4,7 @@ const SpaceCard = require("./components/SpaceCard");
 
 function SearchResults(props) {
   return (
-    <Layout title="Search for Spaces" user={props.user ? props.user : ""}>
+    <Layout title="Search for Spaces" user={props.user ? props.user : ""} pageCSS="/stylesheets/search-results.css">
           <div id="search-horizontal-container">
             <form action="/search" method="GET">
               <label htmlFor="city">City </label>
