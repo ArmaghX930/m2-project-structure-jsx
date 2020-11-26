@@ -42,21 +42,6 @@ td:nth-child(even), th:nth-child(even) {
     text-align: right;
 }
 
-.profile-btn {
-    margin-top: 20px;
-    width: 120px;
-    height: 30px;
-    border-radius: 7px;
-    background-color: #E4AB51;
-}
-
-.delete-btn {
-    margin-top: 20px;
-    width: 120px;
-    height: 30px;
-    border-radius: 7px;
-    background-color: #C3C2C2;
-}
 
 #btn-div {
     display: flex;
@@ -72,7 +57,7 @@ td:nth-child(even), th:nth-child(even) {
     justify-content: space-between;
 }
 
-#become-provider {
+.become-provider {
     width: 225px;
     height: 50px;
     text-align: center;
@@ -87,4 +72,15 @@ td:nth-child(even), th:nth-child(even) {
 
 #del-acc-btn {
     padding: 0 0 0 1150px;
+}
+
+.space-shortcut {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid rgba(20, 54, 50, 0.5);
+    border-radius: 7px;
 }

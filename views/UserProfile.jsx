@@ -36,16 +36,19 @@ function UserProfile(props) {
             { props.user.isProvider
               ? <div>
                   {props.user.spaces.map((space, i) => {
-                    return(<div key={i}>
-                      <img width="40px" src={space.imageUrl} />
-                        <a href={`/space/${space._id}`}><h6> {space.title} </h6></a>
-                    </div>)
+                    return(  
+                      <a href={`/space/${space._id}`}>
+                        <div key={i} className="space-shortcut">
+                          <img width="80px" src={space.imageUrl} />
+                            <h6> {space.title} </h6>
+                        </div>
+                    </a>)
                   })}
-                  <a href="/user/space/add"><div>Add Another Space</div></a>
+                  <a href="/user/space/add"><div className="become-provider">Add Another Space</div></a>
                 </div>  
               : ( <div>
                     <h5>You Haven't Listed Any Spaces Yet</h5>
-                    <a href="/user/space/add"><div id="become-provider">Become a Provider</div></a>
+                    <a href="/user/space/add"><div className="become-provider">Become a Provider</div></a>
                 </div>
                  )
             }

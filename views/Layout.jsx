@@ -10,6 +10,7 @@ function Layout(props) {
 
         <link rel="preconnect" href="https://fonts.gstatic.com"/>
         <link href="https://fonts.googleapis.com/css2?family=Didact+Gothic&display=swap" rel="stylesheet"/>
+
         <link rel="stylesheet" href="/stylesheets/style.css" />
         {props.pageCSS ? <link rel="stylesheet" href={props.pageCSS}/> : null }
       </head>

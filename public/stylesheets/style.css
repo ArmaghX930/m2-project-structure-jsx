@@ -181,6 +181,15 @@ form input[type="number"]::placeholder, form input[type="email"]::placeholder, f
   margin-top: 20px;
 }
 
+.profile-btn {
+  margin-top: 20px;
+  width: 120px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: #E4AB51;
+  font-family: 'Didact Gothic', sans-serif;
+  font-size: 1em;
+}
 
 #search-form {
   background-color: rgba(20, 54, 50, 0.7);
@@ -316,4 +325,29 @@ form input[type="number"]::placeholder, form input[type="email"]::placeholder, f
   text-overflow: ellipsis;
   text-align: center;
   line-height: 1.5em;
+}
+
+#del-acc-btn {
+  padding: 0 0 0 1150px;
+}
+
+.delete-btn {
+  margin-top: 20px;
+  width: 120px;
+  height: 30px;
+  border-radius: 7px;
+  background-color: #C3C2C2;
+}
+
+.avail-today {
+  width: 100px;
+  background-color: #CA5548;
+  border: 1px solid black;
+  border-radius: 7px;
+  color: black;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 10px;
+  padding: 5px;
 }

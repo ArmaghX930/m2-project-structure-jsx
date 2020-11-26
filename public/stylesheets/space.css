@@ -1,0 +1,32 @@
+section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 25px 0;
+}
+
+h1, h3, h4 {
+    font-weight: bold;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2vw;
+}
+
+p {
+    font-weight: bold;
+}
+
+p>span {
+    font-weight: normal;
+}
+
+aside {
+    line-height: 20px;
+}
+
+
+
+
