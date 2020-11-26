@@ -29,7 +29,7 @@ function Home(props) {
                 <button class="click-btn" type="submit">Search</button>
               </form>
             </div>
-            <div id="space-container">
+            <div className="space-container">
             {props.spaces.map((spaceObj, i) => {
               return (
                 <SpaceCard space={spaceObj} key={i}>

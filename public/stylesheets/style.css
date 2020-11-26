@@ -232,7 +232,7 @@ form input[type="number"]::placeholder, form input[type="email"]::placeholder, f
   align-items: center;
 }
 
-#space-container {
+.space-container {
   width: 700px;
   height: 400px;
   display: flex;

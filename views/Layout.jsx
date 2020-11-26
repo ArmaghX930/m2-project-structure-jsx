@@ -32,7 +32,9 @@ function Layout(props) {
               </div>) 
           : (<a href="/auth/"><div> <img class="layout-profile-pic" src="/images/profile-image-placeholder.png"/> </div></a>)}
         </header>
+
         {props.children}
+        
         <footer class="layout">
           <a href="/faq">
             <div id="faq">FAQ</div>
