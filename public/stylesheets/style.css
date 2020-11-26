@@ -77,6 +77,26 @@ a:active {
   color: black;
 }
 
+form {
+  color: black;
+  font-weight: bold;
+  text-align: center;
+}
+
+form input {
+  margin: 10px 5px;
+  border-radius: 5px;
+}
+
+form input:focus {
+  border: 3px solid #3d7065;
+  margin: 9px 4px;
+}
+
+form input[type="number"]::placeholder {  
+  text-align: center; 
+} 
+
 .layout {
   color: #1E344A;
   background-color: #65ABAA;
@@ -135,9 +155,10 @@ a:active {
   width: 100px;
   height: 50px;
   background-color: #CA5548;
-  font-size: 1.5em;
+  font-size: 1.2em;
   border-radius: 7px;
   font-family: 'Didact Gothic', sans-serif;
+  margin-top: 20px;
 }
 
 .click-btn:active {
@@ -150,30 +171,12 @@ a:active {
 }
 
 #search-form {
-  color: black;
-  font-weight: bold;
   background-color: #E4AB51;
   padding: 95px 25px 97px 25px;
   text-align: center;
   width: 25%;
   height: 220px;
 }
-
-#search-form input {
-  margin: 10px 0;
-  border-radius: 5px;
-}
-
-#search-form input:focus {
-  border: 3px solid #3d7065;
-  margin-bottom: 9px;
-  margin-top: 9px;
-}
-
-#search-form input[type="number"]::placeholder {  
-  text-align: center; 
-} 
-
 
 #faq {
   font-size: 1.5vw;
@@ -261,4 +264,41 @@ a:active {
   text-align: center;
   margin-bottom: 10px;
   padding: 5px;
+}
+
+#auth-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 290px 0;
+}
+
+#auth-container section {
+  text-align: center;
+  height: 63.5vh;
+}
+
+#auth-container h1 {
+  margin: 25px 0 10px;
+}
+
+#auth-container form {
+  color: #EDDCBD;
+  margin-top: 30px;
+}
+
+
+
+#error-msg {
+  background-color: #E4AB51;
+  padding: 30px 20px;
+  width: 150px;
+  border: 3px solid #CA5548;
+  border-radius: 7px;
+  color: black;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  text-align: center;
+  line-height: 1.5em;
 }
