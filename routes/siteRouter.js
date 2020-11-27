@@ -32,7 +32,6 @@ siteRouter.get("/search", (req, res, next) => {
     let {city, pricePerHour, capacity} = req.query;
     let availToday = req.query.availToday;
     availToday ? availToday = true : availToday = false;
-    console.log(availToday);
     const searchQuery = {city, pricePerHour, capacity, availToday};
 
     pricePerHour ? pricePerHour : pricePerHour = 10000;

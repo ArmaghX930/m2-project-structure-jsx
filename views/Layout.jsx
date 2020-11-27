@@ -17,7 +17,7 @@ function Layout(props) {
       <body>
         <header id="layout-header" class="layout">
           <a href="/"><div> <img src="/images/logo.png" width="180"/> </div></a>
-          <h3>Self explanatory catchphrase</h3>
+          <h3>new workspace every day</h3>
           {props.user 
           ? ( <div id="login-header-div">
                 <a href={`/user`}>

@@ -3,16 +3,17 @@ const Layout = require('./Layout');
 
 function EditSpace(props) {
     return (
-        <Layout title={`Edit ${props.space.title}`} user={props.user}>
-            <h1>Edit Space</h1>
-                <form action={`/user/space/edit/${props.space._id}`} method="POST" encType="multipart/form-data">
+        <Layout title={`Edit ${props.space.title}`} user={props.user} pageCSS="/stylesheets/space.css">
+            <h1>Edit {props.space.title}</h1>
+            <main id="edit-space-main"> 
+            <form action={`/user/space/edit/${props.space._id}`} method="POST" encType="multipart/form-data">
                     <label htmlFor="title">Title</label><br/>
                     <input type="text" name="title" value={props.space.title} maxlength="20"/>
                     <br/>
                     <label htmlFor="address">Address</label><br/>
                     <input type="text" name="address" value={props.space.address}/>
                     <br/>
-                    <label htmlFor="coordinates">Provide the Location Coordinates to Display the Space on the Map(optional)</label><br/>
+                    <label htmlFor="coordinates">Provide the Location Coordinates <br/> to Display the Space on the Map (optional)</label><br/>
                     <input type="text" name="longitude" placeholder="Longitude" value={props.space.coordinates[0]}/> <br/>
                     <input type="text" name="latitude" placeholder="Latitude" value={props.space.coordinates[1]}/> 
                     <br/>
@@ -93,8 +94,6 @@ function EditSpace(props) {
                     <label htmlFor="discount">Discount</label><br/>
                     <input type="number" name="discount" min="0" max="100" value="0" value={props.space.discount * 100}/><span> %</span>
                     <br/>
-                    <p>Current Image</p>
-                    <img width="120px" src={props.space.imageUrl} /><br/>
                     <label htmlFor="imageUrl">Update Photo</label><br/>
                     <input type="file" name="imageUrl" /> <br/>
                     <label htmlFor="availToday">Available Today</label><br/>
@@ -104,9 +103,15 @@ function EditSpace(props) {
                     }
                     
                     <br/>
-                    <button type="submit">Publish</button>
+                    <button type="submit" className="profile-btn">Publish</button>
                     
                 </form>
+                <div>
+                    <p>Current Image</p>
+                    <img width="600px" src={props.space.imageUrl} />
+                </div>
+            </main>
+                
         </Layout>
 
     )

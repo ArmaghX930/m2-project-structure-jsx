@@ -13,6 +13,7 @@ h1, h3, h4 {
 
 h1 {
     font-size: 2vw;
+    margin-bottom: 30px;
 }
 
 p {
@@ -30,10 +31,31 @@ aside {
 form>label {
     margin-bottom: 7px 0;
 }
-/* form input {
-    margin-top: 7px 0;
-} */
 
+img {
+    margin-top: 20px;
+}
 
+#booking-preview {
+    margin: 15px 0;
+    line-height: 20px;
+}
 
+#booking-preview p {
+    font-weight: normal;
+}
 
+#booking-preview span {
+    font-weight: bold;
+}
+
+main {
+    min-height: 65vh;
+}
+
+#del-space-msg {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}

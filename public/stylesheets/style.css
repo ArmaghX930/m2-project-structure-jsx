@@ -229,8 +229,9 @@ form input[type="number"]::placeholder, form input[type="email"]::placeholder, f
   align-items: center;
 }
 
-#intro-text {
+.intro-text {
   margin: 30px;
+  text-align: center;
 }
 
 #search-container {
@@ -248,6 +249,40 @@ form input[type="number"]::placeholder, form input[type="email"]::placeholder, f
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
+}
+
+.booking-card {
+  border: 1px solid black;
+  border-radius: 7px;
+  background-color: white;
+  margin: 10px;
+  width: 300px;
+  padding: 10px;
+}
+
+.booking-card h5 {
+  margin: 10px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.booking-card span {
+  font-weight: bold;
+}
+
+#edit-space-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#booking-div {
+  width: 620px;
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+  align-items: flex-start;
+  flex-wrap: wrap;
 }
 
 #provider-ad {

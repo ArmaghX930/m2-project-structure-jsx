@@ -7,7 +7,7 @@ function Home(props) {
     <Layout title="spaceOut" user={props.user ? props.user : ""}>
       <main>
         <section id="home-intro">
-          <h2 id="intro-text">Description that blah blah blah</h2>
+          <h2 className="intro-text">With spaceOut, book a co-working space on an hourly rate. <br/> Change your office environment as often as you want choosing among various options in your area!</h2>
           <div id="search-container">
             <div id="search-form">
               <form action="/search" method="GET">
@@ -41,7 +41,7 @@ function Home(props) {
         </section>
         <hr id="home-hr"/>
         <article id="provider-ad">
-          <p>aggressive provider recruitment</p>
+          <h2 className="intro-text">You can become a space provider by listing your unused equipped space. <br/> Convert those square meters into your passive income!</h2>
           {props.user 
           ? <a href="/user"><div id="become-provider-btn">BECOME SPACE PROVIDER</div></a>
           : <a href="/auth"><div id="become-provider-btn">BECOME SPACE PROVIDER</div></a>

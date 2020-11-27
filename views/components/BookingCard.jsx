@@ -2,11 +2,12 @@ const React = require("react");
 
 function BookingCard(props) {
   return (
-    <div>
+    <div className="booking-card">
         <h5>Booking confirmation</h5>
-        <p>Your booking with <a href={`/space/${props.booking.spaceID._id}`}>{props.booking.spaceID.title}</a> is confirmed at {props.booking.startDate} on {props.booking.startDate}.</p>
+        <p>Your booking with <a href={`/space/${props.booking.spaceID._id}`}> <span>{props.booking.spaceID.title}</span></a> is confirmed at <span>{props.booking.startTime}</span> on <span>{props.booking.startDate}</span>.</p>
     </div>
   );
 }
 
 module.exports = BookingCard;
+

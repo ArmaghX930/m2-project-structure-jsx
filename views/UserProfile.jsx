@@ -57,7 +57,7 @@ function UserProfile(props) {
             
         <section>
             <h3>Your Bookings</h3>
-            <div>
+            <div id="booking-div">
               {props.user.bookings[0]
               ? props.user.bookings.map((booking, i) => {
                 return (
