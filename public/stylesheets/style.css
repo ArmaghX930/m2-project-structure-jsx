@@ -277,12 +277,16 @@ form input[type="number"]::placeholder, form input[type="email"]::placeholder, f
 }
 
 #booking-div {
-  width: 620px;
+  width: 400px;
   display: flex;
   flex-direction: row;
   /* justify-content: space-around; */
   align-items: flex-start;
   flex-wrap: wrap;
+}
+
+#booking-history {
+  margin-top: 40px;
 }
 
 #provider-ad {

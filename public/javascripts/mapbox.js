@@ -29,12 +29,14 @@ const main = () => {
     const city = urlParams.get('city');
     const pricePerHour = urlParams.get('pricePerHour');
     const capacity = urlParams.get('capacity');
+    const availToday = urlParams.get('availToday');
     
     axios
-    .get(`http://localhost:3005/api/spaces?city=${city}&pricePerHour=${pricePerHour}&capacity=${capacity}`)
+    .get(`http://localhost:3005/api/spaces?city=${city}&pricePerHour=${pricePerHour}&capacity=${capacity}&availToday=${availToday}`)
     .then(result => {
         console.log(result.data)
         result.data.forEach(space => {
+            console.log(space)
         new mapboxgl.Marker()
           .setLngLat(space.coordinates.reverse()) // reverse the order of Lat and Long
           .setPopup(new mapboxgl.Popup().setHTML(`<a href="/space/${space._id}"><h3>${space.title}</h3></a>`)) 

@@ -30,6 +30,19 @@ function UserProfile(props) {
           <div id="btn-div">            
             <a href="/user/edit"><button className="profile-btn">Edit Account</button></a>
           </div>
+          <section id="booking-history">
+            <h3>Your Bookings</h3>
+            <div id="booking-div">
+              {props.user.bookings[0]
+              ? props.user.bookings.map((booking, i) => {
+                return (
+                  <BookingCard key={i} booking={booking}></BookingCard>
+                )
+              })
+              : <h5>You Have Not Confirmed Any Bookings Yet</h5>
+            }
+            </div>
+        </section>
         </article>
         <aside>
           <h3>Your Listed Spaces</h3>
@@ -55,19 +68,6 @@ function UserProfile(props) {
         </aside>
         </section>
             
-        <section>
-            <h3>Your Bookings</h3>
-            <div id="booking-div">
-              {props.user.bookings[0]
-              ? props.user.bookings.map((booking, i) => {
-                return (
-                  <BookingCard key={i} booking={booking}></BookingCard>
-                )
-              })
-              : <h5>You Have Not Confirmed Any Bookings Yet</h5>
-            }
-            </div>
-        </section>
         <aside id="del-acc-btn"><a href="/user/delete"><button className="delete-btn">Delete Account</button></a></aside>
       </main>
     </Layout>);  

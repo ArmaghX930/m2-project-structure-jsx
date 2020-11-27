@@ -61,8 +61,8 @@ app.use("/auth", authRouter);
 app.use("/user", isLoggedIn, userRouter);
 app.use("/", siteRouter);
 app.get("/api/spaces", (req, res, next) => {
-  const {city, pricePerHour, capacity} = req.query;
-  Space.find({$and:[{city: city}, {pricePerHour:{$lte:pricePerHour}}, {capacity:{$gte:capacity}}]})
+  const {city, pricePerHour, capacity, availToday} = req.query;
+  Space.find({$and:[{city: city}, {pricePerHour:{$lte:pricePerHour}}, {capacity:{$gte:capacity}}, {availToday: availToday}]})
     .then((resultsArr) => {
       res.json(resultsArr);
   })
